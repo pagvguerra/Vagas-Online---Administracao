@@ -17,6 +17,7 @@ import br.com.projeto.daos.EstadoDAO;
 import br.com.projeto.daos.PaisDAO;
 import br.com.projeto.daos.TipoLogradouroDAO;
 import br.com.projeto.utils.GoogleAPI;
+import br.com.projeto.utils.Util;
 
 public class EnderecoBusiness {
 
@@ -108,7 +109,8 @@ public class EnderecoBusiness {
 			enderecoPorExtenso.append(enderecoBean.getCidadeBean().getNome()).append(" ");
 			enderecoPorExtenso.append(enderecoBean.getEstadoBean().getNome()).append(" ");
 			enderecoPorExtenso.append(enderecoBean.getPaisBean().getNome()).append(" ");
-			coordenadaBean = new GoogleAPI().buscaCoordenadasPorEndereco(enderecoPorExtenso.toString());
+			String endereco = Util.retiraAcentos(enderecoPorExtenso.toString());
+			coordenadaBean = new GoogleAPI().buscaCoordenadasPorEndereco(endereco);
 		} catch (Exception e) {
 			throw new Exception("Não foi possível obter as coordenadas com o endereço cadastrado. Favor rever o endereço.");
 		}
