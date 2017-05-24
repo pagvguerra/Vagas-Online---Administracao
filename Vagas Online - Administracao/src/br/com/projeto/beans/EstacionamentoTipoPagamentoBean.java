@@ -1,6 +1,10 @@
 package br.com.projeto.beans;
 
-public class EstacionamentoTipoPagamentoBean {
+import java.io.Serializable;
+
+public class EstacionamentoTipoPagamentoBean implements Serializable {
+
+	private static final long serialVersionUID = 377473801616006787L;
 
 	private int idEstacionamento;
 	private int idTipoPagamento;
