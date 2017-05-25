@@ -7,7 +7,7 @@ public class TipoPagamentoBean implements Serializable {
 	private static final long serialVersionUID = -7874307450552026956L;
 
 	private int id;
-	private int nome;
+	private String nome;
 
 	public int getId() {
 		return id;
@@ -15,10 +15,10 @@ public class TipoPagamentoBean implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getNome() {
+	public String getNome() {
 		return nome;
 	}
-	public void setNome(int nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	@Override
@@ -26,7 +26,7 @@ public class TipoPagamentoBean implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + nome;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 	@Override
@@ -40,7 +40,10 @@ public class TipoPagamentoBean implements Serializable {
 		TipoPagamentoBean other = (TipoPagamentoBean) obj;
 		if (id != other.id)
 			return false;
-		if (nome != other.nome)
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}

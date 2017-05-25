@@ -6,27 +6,33 @@ public class EstacionamentoTipoPagamentoBean implements Serializable {
 
 	private static final long serialVersionUID = 377473801616006787L;
 
-	private int idEstacionamento;
-	private int idTipoPagamento;
+	private EstacionamentoBean estacionamentoBean;
+	private TipoPagamentoBean tipoPagamentoBean;
 	
-	public int getIdEstacionamento() {
-		return idEstacionamento;
+	public EstacionamentoBean getEstacionamentoBean() {
+		return estacionamentoBean;
 	}
-	public void setIdEstacionamento(int idEstacionamento) {
-		this.idEstacionamento = idEstacionamento;
+	public void setEstacionamentoBean(EstacionamentoBean estacionamentoBean) {
+		this.estacionamentoBean = estacionamentoBean;
 	}
-	public int getIdTipoPagamento() {
-		return idTipoPagamento;
+	public TipoPagamentoBean getTipoPagamentoBean() {
+		return tipoPagamentoBean;
 	}
-	public void setIdTipoPagamento(int idTipoPagamento) {
-		this.idTipoPagamento = idTipoPagamento;
+	public void setTipoPagamentoBean(TipoPagamentoBean tipoPagamentoBean) {
+		this.tipoPagamentoBean = tipoPagamentoBean;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idEstacionamento;
-		result = prime * result + idTipoPagamento;
+		result = prime
+				* result
+				+ ((estacionamentoBean == null) ? 0 : estacionamentoBean
+						.hashCode());
+		result = prime
+				* result
+				+ ((tipoPagamentoBean == null) ? 0 : tipoPagamentoBean
+						.hashCode());
 		return result;
 	}
 	@Override
@@ -38,9 +44,15 @@ public class EstacionamentoTipoPagamentoBean implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		EstacionamentoTipoPagamentoBean other = (EstacionamentoTipoPagamentoBean) obj;
-		if (idEstacionamento != other.idEstacionamento)
+		if (estacionamentoBean == null) {
+			if (other.estacionamentoBean != null)
+				return false;
+		} else if (!estacionamentoBean.equals(other.estacionamentoBean))
 			return false;
-		if (idTipoPagamento != other.idTipoPagamento)
+		if (tipoPagamentoBean == null) {
+			if (other.tipoPagamentoBean != null)
+				return false;
+		} else if (!tipoPagamentoBean.equals(other.tipoPagamentoBean))
 			return false;
 		return true;
 	}

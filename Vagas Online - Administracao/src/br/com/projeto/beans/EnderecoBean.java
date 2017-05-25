@@ -77,5 +77,85 @@ public class EnderecoBean implements Serializable{
 	public void setCoordenadaBean(CoordenadaBean coordenadaBean) {
 		this.coordenadaBean = coordenadaBean;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((bairroBean == null) ? 0 : bairroBean.hashCode());
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result
+				+ ((cidadeBean == null) ? 0 : cidadeBean.hashCode());
+		result = prime * result
+				+ ((coordenadaBean == null) ? 0 : coordenadaBean.hashCode());
+		result = prime * result
+				+ ((estadoBean == null) ? 0 : estadoBean.hashCode());
+		result = prime * result + id;
+		result = prime * result
+				+ ((nomeLogradouro == null) ? 0 : nomeLogradouro.hashCode());
+		result = prime * result + numero;
+		result = prime * result
+				+ ((paisBean == null) ? 0 : paisBean.hashCode());
+		result = prime
+				* result
+				+ ((tipoLogradouroBean == null) ? 0 : tipoLogradouroBean
+						.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EnderecoBean other = (EnderecoBean) obj;
+		if (bairroBean == null) {
+			if (other.bairroBean != null)
+				return false;
+		} else if (!bairroBean.equals(other.bairroBean))
+			return false;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
+		if (cidadeBean == null) {
+			if (other.cidadeBean != null)
+				return false;
+		} else if (!cidadeBean.equals(other.cidadeBean))
+			return false;
+		if (coordenadaBean == null) {
+			if (other.coordenadaBean != null)
+				return false;
+		} else if (!coordenadaBean.equals(other.coordenadaBean))
+			return false;
+		if (estadoBean == null) {
+			if (other.estadoBean != null)
+				return false;
+		} else if (!estadoBean.equals(other.estadoBean))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nomeLogradouro == null) {
+			if (other.nomeLogradouro != null)
+				return false;
+		} else if (!nomeLogradouro.equals(other.nomeLogradouro))
+			return false;
+		if (numero != other.numero)
+			return false;
+		if (paisBean == null) {
+			if (other.paisBean != null)
+				return false;
+		} else if (!paisBean.equals(other.paisBean))
+			return false;
+		if (tipoLogradouroBean == null) {
+			if (other.tipoLogradouroBean != null)
+				return false;
+		} else if (!tipoLogradouroBean.equals(other.tipoLogradouroBean))
+			return false;
+		return true;
+	}
 
 }

@@ -92,7 +92,7 @@
 										&nbsp;
 										<a href="http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/VagaController?acao=LISTAR_TODOS&idEstacionamento=<c:out value='${estacionamento.id}'/>"><span class="glyphicon glyphicon-th-list" title="GERENCIAR VAGAS"></span></a>
 										&nbsp;
-										<a href="http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/TipoPagamentoController?acao=LISTAR_TODOS&idEstacionamento=<c:out value='${estacionamento.id}'/>"><span class="glyphicon glyphicon-usd" title="GERENCIAR PAGAMENTO"></span></a>
+										<a href="http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/EstacionamentoTipoPagamentoController?acao=LISTAR_TODOS&idEstacionamento=<c:out value='${estacionamento.id}'/>"><span class="glyphicon glyphicon-usd" title="GERENCIAR PAGAMENTO"></span></a>
 										&nbsp;
 										<a href="http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/EstacionamentoController?acao=DETALHAR_ESTACIONAMENTO&idEstacionamento=<c:out value='${estacionamento.id}'/>"><span class="glyphicon glyphicon-pencil" title="ALTERAR ESTACIONAMENTO"></span></a>
 										&nbsp;

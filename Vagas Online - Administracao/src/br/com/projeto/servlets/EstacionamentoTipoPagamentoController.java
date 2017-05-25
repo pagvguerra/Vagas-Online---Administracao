@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.projeto.business.TipoPagamentoBusiness;
+import br.com.projeto.business.EstacionamentoTipoPagamentoBusiness;
 
-public class TipoPagamentoController extends HttpServlet {
+public class EstacionamentoTipoPagamentoController extends HttpServlet {
 
 	private static final long serialVersionUID = -5261808852495605817L;
 
-	public TipoPagamentoController() {
+	public EstacionamentoTipoPagamentoController() {
         super();
     }
 
@@ -22,7 +22,7 @@ public class TipoPagamentoController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String urlRedirecinamento = TipoPagamentoBusiness.getInstance().execute(request, response);
+		String urlRedirecinamento = EstacionamentoTipoPagamentoBusiness.getInstance().execute(request, response);
 		request.getRequestDispatcher(urlRedirecinamento).forward(request,response);
 	}
 
