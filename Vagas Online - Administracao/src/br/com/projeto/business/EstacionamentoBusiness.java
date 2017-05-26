@@ -1,6 +1,7 @@
 package br.com.projeto.business;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,14 +12,17 @@ import br.com.projeto.beans.BairroBean;
 import br.com.projeto.beans.CidadeBean;
 import br.com.projeto.beans.EnderecoBean;
 import br.com.projeto.beans.EstacionamentoBean;
+import br.com.projeto.beans.EstacionamentoTipoPagamentoBean;
 import br.com.projeto.beans.EstadoBean;
 import br.com.projeto.beans.PaisBean;
 import br.com.projeto.beans.TipoLogradouroBean;
+import br.com.projeto.beans.TipoPagamentoBean;
 import br.com.projeto.beans.UsuarioBean;
 import br.com.projeto.daos.BairroDAO;
 import br.com.projeto.daos.CidadeDAO;
 import br.com.projeto.daos.EnderecoDAO;
 import br.com.projeto.daos.EstacionamentoDAO;
+import br.com.projeto.daos.EstacionamentoTipoPagamentoDAO;
 import br.com.projeto.daos.EstadoDAO;
 import br.com.projeto.daos.FuncionarioDAO;
 import br.com.projeto.daos.PaisDAO;
@@ -224,6 +228,23 @@ public class EstacionamentoBusiness {
 			
 			if(!atualizou) {
 				throw new Exception("Erro ao adicionar o estacionamento ao administrador do sistema");
+			}
+			
+			//Colocando o tipo de pagamento dinheiro para o estacionamento
+			TipoPagamentoBean tipoPagamentoBean = new TipoPagamentoBean();
+			tipoPagamentoBean.setId(1);
+
+			EstacionamentoTipoPagamentoBean estacionamentoTipoPagamentoBean = new EstacionamentoTipoPagamentoBean();
+			estacionamentoTipoPagamentoBean.setEstacionamentoBean(estacionamentoBean);
+			estacionamentoTipoPagamentoBean.setTipoPagamentoBean(tipoPagamentoBean);
+			
+			List<EstacionamentoTipoPagamentoBean> listaEstacionamentoTipoPagamentoBean = new ArrayList<EstacionamentoTipoPagamentoBean>();
+			listaEstacionamentoTipoPagamentoBean.add(estacionamentoTipoPagamentoBean);
+			
+			boolean incluiTipoPagamento = new EstacionamentoTipoPagamentoDAO().inserir(listaEstacionamentoTipoPagamentoBean);
+			
+			if(!incluiTipoPagamento) {
+				throw new Exception("Erro ao incluir o tipo de pagamento ao cadastrar o estacionamento");
 			}
 			
 			preencheRetorno(request, response, "Estacionamento inserido com sucesso", URLs.URL_SUCESSO_CADASTRO_ESTACIONAMENTO);
