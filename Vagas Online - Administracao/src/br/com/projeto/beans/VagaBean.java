@@ -11,8 +11,8 @@ public class VagaBean implements Serializable {
 	private String codigo;
 	private int largura;
 	private int altura;
+	private int comprimento;
 	private TipoVagaBean tipoVagaBean;
-	
 	
 	public int getId() {
 		return id;
@@ -62,12 +62,21 @@ public class VagaBean implements Serializable {
 		this.tipoVagaBean = tipoVagaBean;
 	}
 
+	public int getComprimento() {
+		return comprimento;
+	}
+
+	public void setComprimento(int comprimento) {
+		this.comprimento = comprimento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + altura;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + comprimento;
 		result = prime * result + id;
 		result = prime * result + idEstacionamento;
 		result = prime * result + largura;
@@ -91,6 +100,8 @@ public class VagaBean implements Serializable {
 			if (other.codigo != null)
 				return false;
 		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (comprimento != other.comprimento)
 			return false;
 		if (id != other.id)
 			return false;

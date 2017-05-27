@@ -130,6 +130,7 @@ create table vaga (
 	codigo varchar(10) not null unique,
 	largura int not null,
 	altura int not null,
+	comprimento int not null,
 	status varchar(1) not null DEFAULT 'D',
 	data_locacao_vaga TIMESTAMP,
 	data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
@@ -170,3 +171,18 @@ ALTER TABLE estacionamento_tp_pagamento ADD CONSTRAINT pk_tab PRIMARY KEY (id_es
 ALTER TABLE estacionamento_tp_pagamento ADD CONSTRAINT fk_tp_pagamento FOREIGN KEY(id_tipo_pagamento) REFERENCES tipo_pagamento (id);
 
 ALTER TABLE estacionamento_tp_pagamento ADD CONSTRAINT fk_estacionamento FOREIGN KEY(id_estacionamento) REFERENCES estacionamento (id);
+
+
+-- CRIACAO TB TIPO_PAGAMENTO
+create table historico_aluguel (
+	id int auto_increment primary key,
+	tipo_vaga varchar(28) not null,
+	modelo varchar(50) not null,
+	placa varchar(10) not null,
+	codigo_vaga varchar(10) not null,
+	hora_entrada TIMESTAMP not null,
+	hora_saida TIMESTAMP,
+	valor_cobrado int,
+	tipo_pagamento varchar(50)
+); 
+

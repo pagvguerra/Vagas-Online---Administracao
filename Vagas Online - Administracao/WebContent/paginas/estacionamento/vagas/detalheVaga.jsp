@@ -54,6 +54,9 @@
 						<div class="form-group">
 							Largura..: <input class="form-control" type="number" name="largura" id="largura" min="1" max="100" step="1" value="${vagaBean.largura}">
 						</div>
+						<div class="form-group">
+							Comprimento..: <input class="form-control" type="number" name="comprimento" id="comprimento" min="1" max="100" step="1" value="${vagaBean.comprimento}">
+						</div>
 						<br/><br/>
 						<center>
 							<input type="button" name="botaoAlterar" id="botaoAlterar" value="ALTERAR" class="btn btn-success">

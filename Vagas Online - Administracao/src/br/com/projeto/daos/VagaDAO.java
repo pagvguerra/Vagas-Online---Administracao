@@ -13,12 +13,12 @@ import br.com.projeto.interfaces.GenericDAO;
 
 public class VagaDAO implements GenericDAO<VagaBean> {
 
-	private static final String INSERIR_VAGA 		=	"INSERT INTO VAGA(ID_ESTACIONAMENTO, ID_TIPO_VAGA, LARGURA, ALTURA, CODIGO) VALUES(?, ?, ?, ?, ?)";
-	private static final String ATUALIZAR_VAGA	 	=	"UPDATE VAGA SET CODIGO = ?, ID_TIPO_VAGA = ?, LARGURA = ?, ALTURA = ? WHERE ID = ?";
+	private static final String INSERIR_VAGA 		=	"INSERT INTO VAGA(ID_ESTACIONAMENTO, ID_TIPO_VAGA, LARGURA, ALTURA, COMPRIMENTO, CODIGO) VALUES(?, ?, ?, ?, ?, ?)";
+	private static final String ATUALIZAR_VAGA	 	=	"UPDATE VAGA SET CODIGO = ?, ID_TIPO_VAGA = ?, LARGURA = ?, ALTURA = ?, COMPRIMENTO = ?  WHERE ID = ?";
 	private static final String EXCLUIR_VAGA 		=	"DELETE FROM VAGA WHERE ID = ?";
-	private static final String BUSCA_VAGA_POR_ID 	=	"SELECT ID, CODIGO, ID_ESTACIONAMENTO, ID_TIPO_VAGA, LARGURA, ALTURA FROM VAGA WHERE ID = ?";
+	private static final String BUSCA_VAGA_POR_ID 	=	"SELECT ID, CODIGO, ID_ESTACIONAMENTO, ID_TIPO_VAGA, LARGURA, ALTURA, COMPRIMENTO FROM VAGA WHERE ID = ?";
 
-	private static final String LISTAR_TODOS_VAGAS_POR_ESTACIONAMENTO 			=	"SELECT ID, CODIGO, ID_ESTACIONAMENTO, ID_TIPO_VAGA, LARGURA, ALTURA  FROM VAGA WHERE ID_ESTACIONAMENTO = ?";
+	private static final String LISTAR_TODOS_VAGAS_POR_ESTACIONAMENTO 			=	"SELECT ID, CODIGO, ID_ESTACIONAMENTO, ID_TIPO_VAGA, LARGURA, ALTURA, COMPRIMENTO  FROM VAGA WHERE ID_ESTACIONAMENTO = ?";
 	private static final String BUSCA_SE_EXISTE_ALGUMA_VAGA_NO_ESTACIONAMENTO	=	"SELECT ID_ESTACIONAMENTO FROM VAGA";
 	private static final String EXCLUIR_VAGA_POR_ID_ESTACIONAMENTO				=	"DELETE FROM VAGA WHERE ID_ESTACIONAMENTO = ?";
 	
@@ -32,8 +32,9 @@ public class VagaDAO implements GenericDAO<VagaBean> {
 			pstmt.setInt(1, obj.getIdEstacionamento());
 			pstmt.setInt(2, obj.getTipoVagaBean().getId());
 			pstmt.setInt(3, obj.getLargura());
-			pstmt.setInt(4, obj.getAltura());					
-			pstmt.setString(5, obj.getCodigo());
+			pstmt.setInt(4, obj.getAltura());
+			pstmt.setInt(5, obj.getComprimento());
+			pstmt.setString(6, obj.getCodigo());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("Erro no metodo inserir. Pilha: " + e.getMessage());
@@ -55,8 +56,9 @@ public class VagaDAO implements GenericDAO<VagaBean> {
 			pstmt.setString(1, obj.getCodigo());
 			pstmt.setInt(2, obj.getTipoVagaBean().getId());
 			pstmt.setInt(3, obj.getLargura());
-			pstmt.setInt(4, obj.getAltura());					
-			pstmt.setInt(5, obj.getId());
+			pstmt.setInt(4, obj.getAltura());
+			pstmt.setInt(5, obj.getComprimento());
+			pstmt.setInt(6, obj.getId());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("Erro no metodo alterar. Pilha: " + e.getMessage());
@@ -113,6 +115,7 @@ public class VagaDAO implements GenericDAO<VagaBean> {
 				vagaBean.setCodigo(rs.getString("CODIGO"));
 				vagaBean.setLargura(rs.getInt("LARGURA"));
 				vagaBean.setAltura(rs.getInt("ALTURA"));
+				vagaBean.setComprimento(rs.getInt("COMPRIMENTO"));
 			}
 			
 		} catch (Exception e) {
@@ -152,6 +155,7 @@ public class VagaDAO implements GenericDAO<VagaBean> {
 				vagaBean.setCodigo(rs.getString("CODIGO"));
 				vagaBean.setLargura(rs.getInt("LARGURA"));
 				vagaBean.setAltura(rs.getInt("ALTURA"));
+				vagaBean.setComprimento(rs.getInt("COMPRIMENTO"));
 				listaVagaBean.add(vagaBean);
 			}
 			

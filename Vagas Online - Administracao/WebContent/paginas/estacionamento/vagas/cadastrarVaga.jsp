@@ -48,6 +48,9 @@
 						<div class="form-group">
 							Largura..: <input class="form-control" type="number" name="largura" id="largura" min="1" max="100" step="1" value="1">
 						</div>
+						<div class="form-group">
+							Comprimento..: <input class="form-control" type="number" name="comprimento" id="comprimento" min="1" max="100" step="1" value="1">
+						</div>
 						<br/><br/>
 						<center>
 							<input type="button" name="botaoInserir" id="botaoInserir" value="CADASTRAR" class="btn btn-success">

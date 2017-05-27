@@ -175,6 +175,7 @@ public class VagaBusiness {
 		int tipoVaga	=	Integer.parseInt(request.getParameter("tipoVaga"));
 		int largura		=	Integer.parseInt(request.getParameter("largura"));
 		int altura		=	Integer.parseInt(request.getParameter("altura"));
+		int comprimento	=	Integer.parseInt(request.getParameter("comprimento"));
 		
 		TipoVagaBean tipoVagaBean = new TipoVagaBean();
 		tipoVagaBean.setId(tipoVaga);
@@ -185,6 +186,7 @@ public class VagaBusiness {
 		vagaBean.setTipoVagaBean(tipoVagaBean);
 		vagaBean.setLargura(largura);
 		vagaBean.setAltura(altura);
+		vagaBean.setComprimento(comprimento);
 		
 		return vagaBean;
 	} 

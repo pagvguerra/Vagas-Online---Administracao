@@ -41,10 +41,11 @@
 					<table width="100%" class="table table-hover">
 						<thead>
 						<tr>
-							<th>Código</td>
-							<th>Tipo da Vaga</td>
-							<th>Altura</td>
-							<th>Largura</td>
+							<th>Código</th>
+							<th>Tipo da Vaga</th>
+							<th>Altura</th>
+							<th>Largura</th>
+							<th>Comprimento</th>
 							<th>Ações</th>
 						</tr>
 						</thead>
@@ -60,6 +61,7 @@
 									<td><c:out value="${vaga.tipoVagaBean.nome}"/></td>
 									<td><c:out value="${vaga.altura}"/></td>
 									<td><c:out value="${vaga.largura}"/></td>
+									<td><c:out value="${vaga.comprimento}"/></td>
 									<td>
 										<a href="http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/VagaController?acao=DETALHAR&id=<c:out value='${vaga.id}'/>&idEstacionamento=<c:out value='${idEstacionamento}'/>"><span class="glyphicon glyphicon-pencil"></span></a>
 										&nbsp;
