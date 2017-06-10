@@ -40,7 +40,7 @@ $(function() {
 	<tr>
 		<td>
 			<a href="http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/EstacionamentoController?acao=LISTAR_TODOS">
-				<img src="${pageContext.request.contextPath}/estaticos/images/logo_carro.png" width="160px;" height="120px;">
+				<img src="${pageContext.request.contextPath}/estaticos/images/logotipo.png" width="160px;" height="150px;">
 			</a>
 		</td>
 		<td align="center"><b>Login do Administrador..:</b>&nbsp;${usuario.login}</td>

@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="col-sm-2">
 				<br><br><br><br><br><br>
-				<img src="${images}/logo_carro.png" width="160px;" height="140px;">
+				<img src="${images}/logotipo.png" width="160px;" height="150px;">
 			</div>
 			<div class="col-sm-5">
 				<fieldset>
