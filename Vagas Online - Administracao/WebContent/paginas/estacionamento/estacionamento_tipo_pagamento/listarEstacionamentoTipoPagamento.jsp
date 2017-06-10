@@ -49,27 +49,27 @@
 							</tr>	
 						</c:if>
 						<c:if test="${not empty listaEstacionamentoTipoPagamento}">
-							<c:forEach var="estacionamentoTipoPagamento" items="${listaEstacionamentoTipoPagamento}" >
+							<c:forEach var="tp" items="${listaEstacionamentoTipoPagamento}" >
 								<tr>
 									<td>
-										<c:if test="${estacionamentoTipoPagamento.tipoPagamentoBean.nome == 'dinheiro'}">
+										<c:if test="${tp.tipoPagamentoBean.nome == 'dinheiro' || tp.tipoPagamentoBean.nome == 'DINHEIRO'}">
 											<img src="${pageContext.request.contextPath}/estaticos/images/dinheiro.png" title="dinheiro">										
 										</c:if>	
-										<c:if test="${estacionamentoTipoPagamento.tipoPagamentoBean.nome == 'visa'}">
+										<c:if test="${tp.tipoPagamentoBean.nome == 'visa' || tp.tipoPagamentoBean.nome == 'VISA'}">
 											<img src="${pageContext.request.contextPath}/estaticos/images/visa.png" title="visa">										
 										</c:if>	
-										<c:if test="${estacionamentoTipoPagamento.tipoPagamentoBean.nome == 'master'}">
+										<c:if test="${tp.tipoPagamentoBean.nome == 'master' || tp.tipoPagamentoBean.nome == 'MASTER'}">
 											<img src="${pageContext.request.contextPath}/estaticos/images/master.png" title="master">
 										</c:if>	
-										<c:if test="${estacionamentoTipoPagamento.tipoPagamentoBean.nome == 'amex'}">
+										<c:if test="${tp.tipoPagamentoBean.nome == 'amex' || tp.tipoPagamentoBean.nome == 'AMEX'}">
 											<img src="${pageContext.request.contextPath}/estaticos/images/amex.png" title="amex">										
 										</c:if>	
 									</td>
 									<td>
-										<c:if test="${estacionamentoTipoPagamento.tipoPagamentoBean.id != 1}">
-											<a href="#" onclick="javascript:excluir('<c:out value='${estacionamentoTipoPagamento.tipoPagamentoBean.id}'/>','<c:out value='${idEstacionamento}'/>')"><span class="glyphicon glyphicon-trash"></span></a>
+										<c:if test="${tp.tipoPagamentoBean.id != 1}">
+											<a href="#" onclick="javascript:excluir('<c:out value='${tp.tipoPagamentoBean.id}'/>','<c:out value='${idEstacionamento}'/>')"><span class="glyphicon glyphicon-trash"></span></a>
 										</c:if>
-										<c:if test="${estacionamentoTipoPagamento.tipoPagamentoBean.id == 1}">
+										<c:if test="${tp.tipoPagamentoBean.id == 1}">
 											-
 										</c:if>			
 									</td>
