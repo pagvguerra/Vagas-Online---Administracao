@@ -5,6 +5,10 @@ $(function() {
 		var cpf = $("#cpf").val();
 		var rg = $("#rg").val();
 		var email = $("#email").val();
+		var resposta1 = $("#resposta1").val();
+		var resposta2 = $("#resposta2").val();
+		var resposta3 = $("#resposta3").val();
+		var resposta4 = $("#resposta4").val();
 		
 		if(nome == null || nome == '') {
 			alert('Preencha o Nome');
@@ -42,14 +46,34 @@ $(function() {
 		if( !er.exec(email) ) {
 			alert('Digite um Email valido!');
 			return false;
-		} else {
-			$('form').attr({
-			 	action : 'http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/AdministradorEstacionamentoController',
-			    method : 'post'
-			 });
-			 $("#acao").val('ALTERAR');
-			 $('form').submit();
 		}
+		
+		if(resposta1 == null || resposta1 == '') {
+			alert('Preencha a Pergunta 1');
+			return false;
+		}
+		
+		if(resposta2 == null || resposta2 == '') {
+			alert('Preencha a Pergunta 2');
+			return false;
+		}
+		
+		if(resposta3 == null || resposta3 == '') {
+			alert('Preencha a Pergunta 3');
+			return false;
+		}
+		
+		if(resposta4 == null || resposta4 == '') {
+			alert('Preencha a Pergunta 4');
+			return false;
+		}
+			
+		$('form').attr({
+		 	action : 'http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/AdministradorEstacionamentoController',
+		    method : 'post'
+		 });
+		 $("#acao").val('ALTERAR');
+		 $('form').submit();
 		
 	});
 	
@@ -62,6 +86,10 @@ $(function() {
 		var cpf = $("#cpf").val();
 		var rg = $("#rg").val();
 		var email = $("#email").val();
+		var resposta1 = $("#resposta1").val();
+		var resposta2 = $("#resposta2").val();
+		var resposta3 = $("#resposta3").val();
+		var resposta4 = $("#resposta4").val();
 		
 		if(login == null || login == '') {
 			alert('Preencha o Login');
@@ -119,10 +147,30 @@ $(function() {
 		if( !er.exec(email) ) {
 			alert('Digite um Email valido!');
 			return false;
-		} else {
-			form.submit();
+		} 
+		
+		if(resposta1 == null || resposta1 == '') {
+			alert('Preencha a Pergunta 1');
+			return false;
 		}
-
+		
+		if(resposta2 == null || resposta2 == '') {
+			alert('Preencha a Pergunta 2');
+			return false;
+		}
+		
+		if(resposta3 == null || resposta3 == '') {
+			alert('Preencha a Pergunta 3');
+			return false;
+		}
+		
+		if(resposta4 == null || resposta4 == '') {
+			alert('Preencha a Pergunta 4');
+			return false;
+		}
+		
+		form.submit();
+		
 	});
 	
 	function isEmailValido(email){

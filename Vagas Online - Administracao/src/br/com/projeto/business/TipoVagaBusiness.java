@@ -152,8 +152,8 @@ public class TipoVagaBusiness {
 		if(pegaId)
 			id					=	Integer.parseInt(request.getParameter("id"));
 		
-		String nome				=	request.getParameter("nome");
-		int preco				=	Integer.parseInt(request.getParameter("preco"));
+		String nome				=	request.getParameter("nome").trim();
+		int preco				=	Integer.parseInt(request.getParameter("preco").trim());
 		int idEstacionamento	=	Integer.parseInt(request.getParameter("idEstacionamento"));
 
 		TipoVagaBean tipoVagaBean = new TipoVagaBean();

@@ -129,18 +129,22 @@ public class AdministradorEstacionamentoBusiness {
 	}
 	
 	public AdministradorEstacionamentoBean retornaDadosAdministradorEstacionamento(HttpServletRequest request, boolean pegaId) {
-		int id	=	0;
+		int id				=	0;
 		
 		if(pegaId)
-			id			=	Integer.parseInt(request.getParameter("id"));
+			id				=	Integer.parseInt(request.getParameter("id"));
 		
-		String cpf		=	request.getParameter("cpf");
-		String email	=	request.getParameter("email");
-		String login	=	request.getParameter("login");
-		String nome		=	request.getParameter("nome");
-		String rg		=	request.getParameter("rg");
-		String senha 	=	request.getParameter("senha");
-		String sexo 	=	request.getParameter("sexo");
+		String cpf			=	request.getParameter("cpf").trim();
+		String email		=	request.getParameter("email").trim();
+		String login		=	request.getParameter("login").trim();
+		String nome			=	request.getParameter("nome").trim();
+		String rg			=	request.getParameter("rg").trim();
+		String senha 		=	request.getParameter("senha").trim();
+		String sexo 		=	request.getParameter("sexo");
+		String resposta1	=	request.getParameter("resposta1").trim();
+		String resposta2	=	request.getParameter("resposta2").trim();
+		String resposta3	=	request.getParameter("resposta3").trim();
+		String resposta4	=	request.getParameter("resposta4").trim();
 		
 		AdministradorEstacionamentoBean administradorEstacionamentoBean = new AdministradorEstacionamentoBean();
 		administradorEstacionamentoBean.setId(id);
@@ -152,7 +156,11 @@ public class AdministradorEstacionamentoBusiness {
 		administradorEstacionamentoBean.setRg(rg);
 		administradorEstacionamentoBean.setSenha(senha);
 		administradorEstacionamentoBean.setSexo(sexo);
-		
+		administradorEstacionamentoBean.setResposta1(resposta1);
+		administradorEstacionamentoBean.setResposta2(resposta2);
+		administradorEstacionamentoBean.setResposta3(resposta3);
+		administradorEstacionamentoBean.setResposta4(resposta4);
+
 		return administradorEstacionamentoBean;
 	} 
 

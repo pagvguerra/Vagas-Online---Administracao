@@ -184,5 +184,18 @@ create table historico_aluguel (
 	hora_saida TIMESTAMP,
 	valor_cobrado int,
 	tipo_pagamento varchar(50)
-); 
+);
+
+
+-- CRIACAO DA TABELA DE RESPOSTAS DO USUARIO (USUARIO_RESPOSTAS)
+create table usuario_resposta(
+	id int auto_increment primary key,
+	id_usuario int unique not null,
+	resposta1 varchar(255) not null,
+	resposta2 varchar(255) not null,
+	resposta3 varchar(255) not null,
+	resposta4 varchar(255) not null
+);
+
+
 

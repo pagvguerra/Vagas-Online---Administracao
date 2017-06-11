@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import br.com.projeto.beans.AutenticacaoBean;
 import br.com.projeto.beans.UsuarioBean;
 import br.com.projeto.daos.AutenticacaoDAO;
+import br.com.projeto.daos.UsuarioDAO;
 import br.com.projeto.resources.Mensagens;
 import br.com.projeto.resources.URLs;
 import br.com.projeto.utils.Util;
@@ -60,8 +61,28 @@ public class AutenticacaoBunisess {
 
 			usuarioBean = new UsuarioBean();
 			usuarioBean.setLogin(request.getParameter(CAMPO_LOGIN).trim());
-			usuarioBean.setSenha(Util.criptografa(request.getParameter(CAMPO_SENHA).trim()));
 			
+			usuarioBean = new UsuarioDAO().buscarPorLogin(usuarioBean.getLogin());
+			
+			if(usuarioBean == null) {
+				preencheRetorno(request, response, Mensagens.USUARIO_NAO_ENCONTRADO, URLs.URL_ERRO_REDEFINIR_SENHA);
+				return;
+			}
+			
+			usuarioBean.setLogin(request.getParameter(CAMPO_LOGIN).trim());
+			usuarioBean.setResposta1(request.getParameter("resposta1").trim());
+			usuarioBean.setResposta2(request.getParameter("resposta2").trim());
+			usuarioBean.setResposta3(request.getParameter("resposta3").trim());
+			usuarioBean.setResposta4(request.getParameter("resposta4").trim());
+			
+			boolean validou = new UsuarioDAO().validaRespostasUsuario(usuarioBean);
+			
+			if(!validou) {
+				preencheRetorno(request, response, Mensagens.USUARIO_NAO_ENCONTRADO, URLs.URL_ERRO_REDEFINIR_SENHA);
+				return;
+			}
+			
+			usuarioBean.setSenha(Util.criptografa(request.getParameter(CAMPO_SENHA).trim()));
 			boolean alterouSenha = new AutenticacaoDAO().redefineSenhaPorLogin(usuarioBean);
 			
 			if(alterouSenha) {

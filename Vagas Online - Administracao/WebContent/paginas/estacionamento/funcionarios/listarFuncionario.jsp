@@ -39,8 +39,9 @@
 					<table width="100%" class="table table-hover">
 						<thead>
 						<tr>
-							<th>Nome</td>
-							<th>Login</td>
+							<th>Nome</th>
+							<th>Login</th>
+							<th>Senha</th>
 							<th>CPF</th>
 							<th>RG</th>
 							<th>Email</th>
@@ -57,6 +58,7 @@
 								<tr>
 									<td><c:out value="${funcionario.nome}"/></td>
 									<td><c:out value="${funcionario.login}"/></td>
+									<td><c:out value="${funcionario.senha}"/></td>
 									<td><c:out value="${funcionario.cpf}"/></td>
 									<td><c:out value="${funcionario.rg}"/></td>
 									<td><c:out value="${funcionario.email}"/></td>

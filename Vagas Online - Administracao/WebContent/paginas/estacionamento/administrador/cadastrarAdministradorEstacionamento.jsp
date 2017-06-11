@@ -48,6 +48,27 @@
 								<option value="F">Feminino</option>
 							</select>
 						</div>
+						<br><br>
+						<div class="form-group">
+							<b>Perguntas para caso de Redefinição de senha:</b>
+						</div>
+						<br>
+						<div class="form-group">
+							Pergunta 1 ..: Qual a sua cor favorita?
+							<input class="form-control" type="text" name="resposta1" id="resposta1">
+						</div>
+						<div class="form-group">
+							Pergunta 2 ..: Qual o nome completo da sua mãe?
+							<input class="form-control" type="text" name="resposta2" id="resposta2">
+						</div>
+						<div class="form-group">
+							Pergunta 3 ..: Qual o ano do seu nascimento?
+							<input class="form-control" type="text" name="resposta3" id="resposta3">
+						</div>
+						<div class="form-group">
+							Pergunta 4 ..: Qual o seu maior hobby?
+							<input class="form-control" type="text" name="resposta4" id="resposta4">
+						</div>
 						<br/><br/>
 						<center>
 							<input type="button" name="botaoInserir" id="botaoInserir" value="CADASTRAR" class="btn btn-success">

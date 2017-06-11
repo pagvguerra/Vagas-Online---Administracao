@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,6 +31,12 @@ public class Util{
 
 	public static final String comAcento = "çÇáéíóúıÁÉÍÓÚİàèìòùÀÈÌÒÙãõñäëïöüÿÄËÏÖÜÃÕÑâêîôûÂÊÎÔÛ";  
 	public static final String semAcento = "cCaeiouyAEIOUYaeiouAEIOUaonaeiouyAEIOUAONaeiouAEIOU";
+	
+	public static String geraSenhaAleatoria() {
+		UUID uuid = UUID.randomUUID();  
+		String myRandom = uuid.toString();  
+		return myRandom.substring(0,7);
+	}
 	
 	public boolean validarTamanhaMaximoCampo(String campo, int tam) {
 		if(campo.length() <= tam)

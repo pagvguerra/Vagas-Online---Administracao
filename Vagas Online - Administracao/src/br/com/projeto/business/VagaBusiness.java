@@ -171,11 +171,11 @@ public class VagaBusiness {
 		if(pegaId)
 			id			=	Integer.parseInt(request.getParameter("id"));
 		
-		String codigo	=	request.getParameter("codigo");
+		String codigo	=	request.getParameter("codigo").trim();
 		int tipoVaga	=	Integer.parseInt(request.getParameter("tipoVaga"));
-		int largura		=	Integer.parseInt(request.getParameter("largura"));
-		int altura		=	Integer.parseInt(request.getParameter("altura"));
-		int comprimento	=	Integer.parseInt(request.getParameter("comprimento"));
+		int largura		=	Integer.parseInt(request.getParameter("largura").trim());
+		int altura		=	Integer.parseInt(request.getParameter("altura").trim());
+		int comprimento	=	Integer.parseInt(request.getParameter("comprimento").trim());
 		
 		TipoVagaBean tipoVagaBean = new TipoVagaBean();
 		tipoVagaBean.setId(tipoVaga);

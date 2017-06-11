@@ -49,10 +49,10 @@ public class EnderecoBusiness {
 			enderecoBean.setId(id);
 		}
 		
-		String nomeLogradouro = request.getParameter("nomeLogradouro");
+		String nomeLogradouro = request.getParameter("nomeLogradouro").trim();
 		enderecoBean.setNomeLogradouro(nomeLogradouro);
 		
-		String cep = request.getParameter("cep");
+		String cep = request.getParameter("cep").trim();
 		enderecoBean.setCep(cep);
 
 		int tipoLogradouro = Integer.parseInt(request.getParameter("tipoLogradouro"));

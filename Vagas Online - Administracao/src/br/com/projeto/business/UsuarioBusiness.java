@@ -118,13 +118,13 @@ public class UsuarioBusiness {
 		if(pegaId)
 			id			=	Integer.parseInt(request.getParameter("id"));
 		
-		String cpf		=	request.getParameter("cpf");
-		String email	=	request.getParameter("email");
-		String login	=	request.getParameter("login");
-		String nome		=	request.getParameter("nome");
-		String rg		=	request.getParameter("rg");
-		String senha 	=	request.getParameter("senha");
-		String sexo 	=	request.getParameter("sexo");
+		String cpf		=	request.getParameter("cpf").trim();
+		String email	=	request.getParameter("email").trim();
+		String login	=	request.getParameter("login").trim();
+		String nome		=	request.getParameter("nome").trim();
+		String rg		=	request.getParameter("rg").trim();
+		String senha 	=	request.getParameter("senha").trim();
+		String sexo 	=	request.getParameter("sexo").trim();
 		
 		UsuarioBean usuarioBean = new UsuarioBean();
 		usuarioBean.setId(id);

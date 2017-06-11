@@ -28,10 +28,10 @@ $(function() {
 		var URL = "http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/AutenticacaoController?acao=FORM_REDEFINIR_SENHA";
 		
 		var width = 600;
-		var height = 400;
+		var height = 700;
 		 
 		var left = 500;
-		var top = 100;
+		var top = 50;
 		 
 		window.open(URL,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
 	});		

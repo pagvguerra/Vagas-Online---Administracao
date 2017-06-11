@@ -264,19 +264,19 @@ public class EstacionamentoBusiness {
 			estacionamentoBean.setId(id);
 		}
 
-		String nomeFantasia = request.getParameter("nomeFantasia");
+		String nomeFantasia = request.getParameter("nomeFantasia").trim();
 		estacionamentoBean.setNomeFantasia(nomeFantasia);
 
-		String razaoSocial = request.getParameter("razaoSocial");
+		String razaoSocial = request.getParameter("razaoSocial").trim();
 		estacionamentoBean.setRazaoSocial(razaoSocial);
 		
-		String cnpj = request.getParameter("cnpj");
+		String cnpj = request.getParameter("cnpj").trim();
 		estacionamentoBean.setCnpj(cnpj);
 
-		String inscricaoMunicipal = request.getParameter("inscricaoMunicipal");
+		String inscricaoMunicipal = request.getParameter("inscricaoMunicipal").trim();
 		estacionamentoBean.setInscricaoMunicipal(inscricaoMunicipal);
 
-		String inscricaoEstadual = request.getParameter("inscricaoEstadual");
+		String inscricaoEstadual = request.getParameter("inscricaoEstadual").trim();
 		estacionamentoBean.setInscricaoEstadual(inscricaoEstadual);
 		
 		return estacionamentoBean;
