@@ -105,8 +105,5 @@ public class EstadoDAO {
 		
 		return listaEstadoBean;
 	}
-	
-	
-	
-	
+
 }

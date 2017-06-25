@@ -4,6 +4,7 @@
 <c:set var="js" value="${pageContext.request.contextPath}/estaticos/js/"/>
 <c:set var="css_bootstrap" value="${pageContext.request.contextPath}/estaticos/js/bootstrap/css"/>
 <c:set var="jspaginas" value="${pageContext.request.contextPath}/estaticos/js/paginas"/>
+<c:set var="imagens" value="${pageContext.request.contextPath}/estaticos/images"/>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -12,6 +13,49 @@
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/estacionamento.js" ></script>
+		
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+				$("select[name=pais]").on('change', function() {
+					carregaEstados();
+				});
+
+				$("select[name=estado]").on('change', function() {
+					// carregaCidade();
+				});
+
+				$("select[name=cidade]").on('change', function() {
+					// carregaBairro();
+				});
+
+				// .....
+				
+			});
+
+			function carregaEstados() {
+				$("#divEstados").load($.post("http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/EstacionamentoController",
+					{
+						acao 	: "BUSCA_ESTADOS",
+						idPais 	: $('#idPais :selected').val()
+					},
+					function(retorno) {
+
+						// Monta o select novamente que foi substituido pelo loading
+						$("#divEstados").html("<select name='estado' id='idEstado' class='form-control'><option value=''>-- Selecione --</option></select>");
+							
+						var lista = retorno.itens;
+						for (var i = 0; i < lista.length; i++) {
+							$("select[name='estado']").append("<option value='" + lista[i].id +"'>"	+ lista[i].nome	+ "</option>");
+						}
+						
+					}, "json"),
+					$("#divEstados").html("<img src='${imagens}/icon_loading.gif' width='80' height='60' />")); // loading...
+			}
+
+		</script>
+		
+		
 	</head>
 	<body>
 		<br/><br/>
@@ -45,7 +89,7 @@
 							<div class="form-group">
 								Pais..:
 								<c:if test="${not empty listaPais}">
-									<select name="pais" class="form-control" >
+									<select name="pais" id="idPais" class="form-control" >
 										<option value="0">SELECIONE</option>
 										<c:forEach var="pais" items="${listaPais}" >
 											<option value="${pais.id}">${pais.nome}</option>
@@ -55,14 +99,11 @@
 							</div>
 							<div class="form-group">
 								Estado..: 
-								<c:if test="${not empty listaEstado}">
-									<select name="estado" class="form-control" >
+								<div id="divEstados">
+									<select name="estado" id="idEstado" class="form-control" >
 										<option value="0">SELECIONE</option>
-										<c:forEach var="estado" items="${listaEstado}" >
-											<option value="${estado.id}">${estado.nome}</option>
-										</c:forEach>	
 									</select>
-								</c:if>	
+								</div>
 							</div>
 							<div class="form-group">
 								Cidade..: 
