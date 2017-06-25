@@ -2,6 +2,8 @@ package br.com.projeto.resources;
 
 public class Mensagens {
 
+	public static final String ERRO_GENERICO_BASICO		=	"Erro na página.";
+	
 	public static final String ERRO_GENERICO 			=	"Erro na página, tente mais tarde. Se o erro persistir contate o administrador do sistema.";
 
 	public static final String LOGIN_VAZIO 				=	"Preencha o Login";

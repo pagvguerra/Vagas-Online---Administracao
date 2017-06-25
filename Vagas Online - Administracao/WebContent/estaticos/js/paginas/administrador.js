@@ -1,16 +1,20 @@
 $(function() {
 
+	//Aplicando as máscaras
+	$("#cpf").mask('000.000.000-00', {reverse: true} );
+    $('#rg').mask('99.999.999-9');
+    
 	$("#botaoAlterar").on('click', function() {
-		var nome = $("#nome").val();
-		var cpf = $("#cpf").val();
-		var rg = $("#rg").val();
-		var email = $("#email").val();
-		var resposta1 = $("#resposta1").val();
-		var resposta2 = $("#resposta2").val();
-		var resposta3 = $("#resposta3").val();
-		var resposta4 = $("#resposta4").val();
+		var nome		=	$("#nome").val().trim();
+		var cpf			=	$("#cpf").val().trim();
+		var rg			=	$("#rg").val().trim();
+		var email		=	$("#email").val().trim();
+		var resposta1 	=	$("#resposta1").val().trim();
+		var resposta2 	=	$("#resposta2").val().trim();
+		var resposta3 	=	$("#resposta3").val().trim();
+		var resposta4 	=	$("#resposta4").val().trim();
 		
-		if(nome == null || nome == '') {
+		if(nome === undefined || nome == null || nome == '') {
 			alert('Preencha o Nome');
 			return false;
 		} 
@@ -20,7 +24,7 @@ $(function() {
 			return false;
 		}
 
-		if(cpf == null || cpf == '') {
+		if(cpf === undefined || cpf == null || cpf == '') {
 			alert('Preencha o CPF');
 			return false;
 		} 
@@ -30,12 +34,12 @@ $(function() {
 			return false;
 		}
 		
-		if(rg == null || rg == '') {
+		if(rg === undefined || rg == null || rg == '') {
 			alert('Preencha o RG');
 			return false;
 		} 
 		
-		if(email == null || email == '') {
+		if(email === undefined || email == null || email == '') {
 			alert('Preencha o Email');
 			return false;
 		} 
@@ -48,22 +52,22 @@ $(function() {
 			return false;
 		}
 		
-		if(resposta1 == null || resposta1 == '') {
+		if(resposta1 === undefined || resposta1 == null || resposta1 == '') {
 			alert('Preencha a Pergunta 1');
 			return false;
 		}
 		
-		if(resposta2 == null || resposta2 == '') {
+		if(resposta2 === undefined || resposta2 == null || resposta2 == '') {
 			alert('Preencha a Pergunta 2');
 			return false;
 		}
 		
-		if(resposta3 == null || resposta3 == '') {
+		if(resposta3 === undefined || resposta3 == null || resposta3 == '') {
 			alert('Preencha a Pergunta 3');
 			return false;
 		}
 		
-		if(resposta4 == null || resposta4 == '') {
+		if(resposta4 === undefined || resposta4 == null || resposta4 == '') {
 			alert('Preencha a Pergunta 4');
 			return false;
 		}
@@ -79,19 +83,19 @@ $(function() {
 	
 	$("#botaoInserir").on('click', function() {
 		
-		var form = $("#formCadastrarAdministradorEstacionamento");
-		var login = $("#login").val();
-		var senha = $("#senha").val();
-		var nome = $("#nome").val();
-		var cpf = $("#cpf").val();
-		var rg = $("#rg").val();
-		var email = $("#email").val();
-		var resposta1 = $("#resposta1").val();
-		var resposta2 = $("#resposta2").val();
-		var resposta3 = $("#resposta3").val();
-		var resposta4 = $("#resposta4").val();
+		var form		=	$("#formCadastrarAdministradorEstacionamento");
+		var login 		=	$("#login").val().trim();
+		var senha 		=	$("#senha").val().trim();
+		var nome 		=	$("#nome").val().trim();
+		var cpf 		=	$("#cpf").val().trim();
+		var rg 			=	$("#rg").val().trim();
+		var email 		=	$("#email").val().trim();
+		var resposta1 	=	$("#resposta1").val().trim();
+		var resposta2 	=	$("#resposta2").val().trim();
+		var resposta3 	=	$("#resposta3").val().trim();
+		var resposta4 	=	$("#resposta4").val().trim();
 		
-		if(login == null || login == '') {
+		if(login === undefined || login == null || login == '') {
 			alert('Preencha o Login');
 			return false;
 		} 
@@ -101,7 +105,7 @@ $(function() {
 			return false;
 		}
 		
-		if(senha == null || senha == '') {
+		if(senha === undefined || senha == null || senha == '') {
 			alert('Preencha a Senha');
 			return false;
 		} 
@@ -111,7 +115,7 @@ $(function() {
 			return false;
 		}
 		
-		if(nome == null || nome == '') {
+		if(nome === undefined || nome == null || nome == '') {
 			alert('Preencha o Nome');
 			return false;
 		} 
@@ -121,7 +125,7 @@ $(function() {
 			return false;
 		}
 
-		if(cpf == null || cpf == '') {
+		if(cpf === undefined || cpf == null || cpf == '') {
 			alert('Preencha o CPF');
 			return false;
 		} 
@@ -131,12 +135,12 @@ $(function() {
 			return false;
 		}
 		
-		if(rg == null || rg == '') {
+		if(rg === undefined || rg == null || rg == '') {
 			alert('Preencha o RG');
 			return false;
 		} 
 		
-		if(email == null || email == '') {
+		if(email === undefined || email == null || email == '') {
 			alert('Preencha o Email');
 			return false;
 		} 
@@ -149,22 +153,22 @@ $(function() {
 			return false;
 		} 
 		
-		if(resposta1 == null || resposta1 == '') {
+		if(resposta1 === undefined || resposta1 == null || resposta1 == '') {
 			alert('Preencha a Pergunta 1');
 			return false;
 		}
 		
-		if(resposta2 == null || resposta2 == '') {
+		if(resposta2 === undefined || resposta2 == null || resposta2 == '') {
 			alert('Preencha a Pergunta 2');
 			return false;
 		}
 		
-		if(resposta3 == null || resposta3 == '') {
+		if(resposta3 === undefined || resposta3 == null || resposta3 == '') {
 			alert('Preencha a Pergunta 3');
 			return false;
 		}
 		
-		if(resposta4 == null || resposta4 == '') {
+		if(resposta4 === undefined || resposta4 == null || resposta4 == '') {
 			alert('Preencha a Pergunta 4');
 			return false;
 		}

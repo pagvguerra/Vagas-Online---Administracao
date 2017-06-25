@@ -29,7 +29,7 @@
 							<legend>Cadastro de Tipo de Pagamento</legend>
 							<br>
 							<div class="form-group">
-								<b>Tipo da Pagamento..:</b><br>
+								<font color="red">*</font>&nbsp;<b>Tipo da Pagamento..:</b><br>
 								<input type="checkbox" name="idTipoPagamentoDinheiro" id="idTipoPagamentoDinheiro" value="1" checked="checked" disabled="disabled" />&nbsp;<img src="${pageContext.request.contextPath}/estaticos/images/dinheiro.png" title="dinheiro">&nbsp;&nbsp;
 
 								<c:if test="${estacionamentoPossuiVisa == false}">

@@ -26,6 +26,7 @@
 		<title>ESTACIONAMENTO ONLINE</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
+		<script src="${js}/jquery.mask.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/estacionamento.js" ></script>
 	</head>
@@ -46,66 +47,80 @@
 							<legend>Alteração de Estacionamento</legend>
 							<br>
 							<div class="form-group">
-								Nome Fantasia..: <input class="form-control" type="text" name="nomeFantasia" id="nomeFantasia" value="${estacionamentoBean.nomeFantasia}">
+								<font color="red">*</font>&nbsp;Nome Fantasia..:
+								<input class="form-control" type="text" name="nomeFantasia" id="nomeFantasia" value="${estacionamentoBean.nomeFantasia}" maxlength="100">
 							</div>
 							<div class="form-group">
-								Razão Social..: <input class="form-control" type="text" name="razaoSocial" id="razaoSocial" value="${estacionamentoBean.razaoSocial}">
+								<font color="red">*</font>&nbsp;Razão Social..:
+								<input class="form-control" type="text" name="razaoSocial" id="razaoSocial" value="${estacionamentoBean.razaoSocial}" maxlength="100">
 							</div>
 							<div class="form-group">
-								CNPJ..: <input class="form-control" type="text" name="cnpj" id="cnpj" value="${estacionamentoBean.cnpj}">
+								<font color="red">*</font>&nbsp;CNPJ..:
+								<input class="form-control" type="text" name="cnpj" id="cnpj" value="${estacionamentoBean.cnpj}" maxlength="20">
 							</div>
 							<div class="form-group">
-								Inscrição Municipal..: <input class="form-control" type="text" name="inscricaoMunicipal" id="inscricaoMunicipal" value="${estacionamentoBean.inscricaoMunicipal}">
+								Inscrição Municipal..: 
+								<input class="form-control" type="text" name="inscricaoMunicipal" id="inscricaoMunicipal" value="${estacionamentoBean.inscricaoMunicipal}" maxlength="50">
 							</div>
 							<div class="form-group">
-								Inscrição Estadual..: <input class="form-control" type="text" name="inscricaoEstadual" id="inscricaoEstadual" value="${estacionamentoBean.inscricaoEstadual}">
+								Inscrição Estadual..: 
+								<input class="form-control" type="text" name="inscricaoEstadual" id="inscricaoEstadual" value="${estacionamentoBean.inscricaoEstadual}" maxlength="50">
 							</div>
 							<div class="form-group">
-								Pais..:
-								<select name="pais" class="form-control" >
-									<option value="0">SELECIONE</option>
-									<% 	for(int i=0; i<listaPais.size(); i++) { 
-											PaisBean paisBean = (PaisBean) listaPais.get(i); %>
-											<option value="<%=paisBean.getId()%>" <%if(paisBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getPaisBean().getNome())){%>selected<%}%>><%=paisBean.getNome()%></option>
-									<%	} %>
-								</select>
+								<font color="red">*</font>&nbsp;Pais..:
+								<c:if test="${not empty listaPais}">
+									<select name="pais" id="idPais" class="form-control" >
+										<option value="0">SELECIONE</option>
+										<% 	for(int i=0; i<listaPais.size(); i++) { 
+												PaisBean paisBean = (PaisBean) listaPais.get(i); %>
+												<option value="<%=paisBean.getId()%>" <%if(paisBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getPaisBean().getNome())){%>selected<%}%>><%=paisBean.getNome()%></option>
+										<%	} %>
+									</select>
+								</c:if>	
 							</div>
 							<div class="form-group">
-								Estado..:
-								<select name="estado" class="form-control" >
-									<option value="0">SELECIONE</option>
-									<% 	for(int i=0; i<listaEstado.size(); i++) { 
-											EstadoBean estadoBean = (EstadoBean) listaEstado.get(i); %>
-											<option value="<%=estadoBean.getId()%>" <%if(estadoBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getEstadoBean().getNome())){%>selected<%}%>><%=estadoBean.getNome()%></option>
-									<%	} %>
-								</select>
+								<font color="red">*</font>&nbsp;Estado..:
+								<div id="divEstados">
+									<select name="estado" id="idEstado" class="form-control" >
+										<option value="0">SELECIONE</option>
+										<% 	for(int i=0; i<listaEstado.size(); i++) { 
+												EstadoBean estadoBean = (EstadoBean) listaEstado.get(i); %>
+												<option value="<%=estadoBean.getId()%>" <%if(estadoBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getEstadoBean().getNome())){%>selected<%}%>><%=estadoBean.getNome()%></option>
+										<%	} %>
+									</select>
+								</div>	
 							</div>
 							<div class="form-group">
-								Cidade..: 
-								<select name="cidade" class="form-control" >
-									<option value="0">SELECIONE</option>
-									<% 	for(int i=0; i<listaCidade.size(); i++) { 
-											CidadeBean cidadeBean = (CidadeBean) listaCidade.get(i); %>
-											<option value="<%=cidadeBean.getId()%>" <%if(cidadeBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getCidadeBean().getNome())){%>selected<%}%>><%=cidadeBean.getNome()%></option>
-									<%	} %>
-								</select>
+								<font color="red">*</font>&nbsp;Cidade..:
+								<div id="divCidades">
+									<select name="cidade" id="idCidade" class="form-control" >
+										<option value="0">SELECIONE</option>
+										<% 	for(int i=0; i<listaCidade.size(); i++) { 
+												CidadeBean cidadeBean = (CidadeBean) listaCidade.get(i); %>
+												<option value="<%=cidadeBean.getId()%>" <%if(cidadeBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getCidadeBean().getNome())){%>selected<%}%>><%=cidadeBean.getNome()%></option>
+										<%	} %>
+									</select>
+								</div>
 							</div>
 							<div class="form-group">
-								Bairro..: 
-								<select name="bairro" class="form-control" >
-									<option value="0">SELECIONE</option>
-									<% 	for(int i=0; i<listaBairro.size(); i++) { 
-											BairroBean bairroBean = (BairroBean) listaBairro.get(i); %>
-											<option value="<%=bairroBean.getId()%>" <%if(bairroBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getBairroBean().getNome())){%>selected<%}%>><%=bairroBean.getNome()%></option>
-									<%	} %>
-								</select>
+								<font color="red">*</font>&nbsp;Bairro..: 
+								<div id="divBairros">
+									<select name="bairro" id="idBairro" class="form-control" >
+										<option value="0">SELECIONE</option>
+										<% 	for(int i=0; i<listaBairro.size(); i++) { 
+												BairroBean bairroBean = (BairroBean) listaBairro.get(i); %>
+												<option value="<%=bairroBean.getId()%>" <%if(bairroBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getBairroBean().getNome())){%>selected<%}%>><%=bairroBean.getNome()%></option>
+										<%	} %>
+									</select>
+								</div>	
 							</div>
 							<div class="form-group">
-								Cep..: <input class="form-control" type="text" name="cep" id="cep" value="${estacionamentoBean.enderecoBean.cep}">
+								<font color="red">*</font>&nbsp;Cep..:
+								<input class="form-control" type="text" name="cep" id="cep" value="${estacionamentoBean.enderecoBean.cep}" maxlength="10">
 							</div>
 							<div class="form-group">
-								Tipo de Logradouro..: 
-								<select name="tipoLogradouro" class="form-control" >
+								<font color="red">*</font>&nbsp;Tipo de Logradouro..: 
+								<select id="tipoLogradouro" name="tipoLogradouro" class="form-control" >
 									<option value="0">SELECIONE</option>
 									<% 	for(int i=0; i<listaTipoLogradouro.size(); i++) { 
 										TipoLogradouroBean tipoLogradouroBean = (TipoLogradouroBean) listaTipoLogradouro.get(i); %>
@@ -114,10 +129,12 @@
 								</select>
 							</div>
 							<div class="form-group">
-								Nome do Logradouro..: <input class="form-control" type="text" name="nomeLogradouro" id="nomeLogradouro" value="${estacionamentoBean.enderecoBean.nomeLogradouro}">
+								<font color="red">*</font>&nbsp;Nome do Logradouro..:
+								<input class="form-control" type="text" name="nomeLogradouro" id="nomeLogradouro" value="${estacionamentoBean.enderecoBean.nomeLogradouro}" maxlength="100">
 							</div>
 							<div class="form-group">
-								Número..: <input class="form-control" type="text" name="numero" id="numero" value="${estacionamentoBean.enderecoBean.numero}">
+								Número..:
+								<input class="form-control" type="text" name="numero" id="numero" value="${estacionamentoBean.enderecoBean.numero}" maxlength="5">
 							</div>
 							<br/><br/>
 							<center>

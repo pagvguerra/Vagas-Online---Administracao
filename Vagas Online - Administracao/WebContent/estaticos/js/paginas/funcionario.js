@@ -1,14 +1,17 @@
 $(function() {
 
-	$("#botaoAlterar").on('click', function() {
-			
-		var login = $("#login").val();
-		var nome = $("#nome").val();
-		var cpf = $("#cpf").val();
-		var rg = $("#rg").val();
-		var email = $("#email").val();
+	//Aplicando as máscaras
+//	$("#cpf").mask('000.000.000-00', {reverse: true} );
+//    $("#rg").mask('99.999.999-9');
+
+    $("#botaoAlterar").on('click', function() {
+		var login	=	$("#login").val().trim();
+		var nome	=	$("#nome").val().trim();
+		var cpf		=	$("#cpf").val().trim();
+		var rg		=	$("#rg").val().trim();
+		var email 	=	$("#email").val().trim();
 		
-		if(login == null || login == '') {
+		if(login === undefined || login == null || login == '') {
 			alert('Preencha o Login');
 			return false;
 		} 
@@ -18,7 +21,7 @@ $(function() {
 			return false;
 		}
 		
-		if(nome == null || nome == '') {
+		if(nome === undefined || nome == null || nome == '') {
 			alert('Preencha o Nome');
 			return false;
 		} 
@@ -28,7 +31,7 @@ $(function() {
 			return false;
 		}
 
-		if(cpf == null || cpf == '') {
+		if(cpf === undefined || cpf == null || cpf == '') {
 			alert('Preencha o CPF');
 			return false;
 		} 
@@ -38,12 +41,12 @@ $(function() {
 			return false;
 		}
 		
-		if(rg == null || rg == '') {
+		if(rg === undefined || rg == null || rg == '') {
 			alert('Preencha o RG');
 			return false;
 		} 
 		
-		if(email == null || email == '') {
+		if(email === undefined || email == null || email == '') {
 			alert('Preencha o Email');
 			return false;
 		} 
@@ -67,14 +70,14 @@ $(function() {
 	
 	$("#botaoInserir").on('click', function() {
 		
-		var form = $("#formCadastrarFuncionarioEstacionamento");
-		var login = $("#login").val();
-		var nome = $("#nome").val();
-		var cpf = $("#cpf").val();
-		var rg = $("#rg").val();
-		var email = $("#email").val();
+		var form	=	$("#formCadastrarFuncionarioEstacionamento");
+		var login	=	$("#login").val().trim();
+		var nome 	=	$("#nome").val().trim();
+		var cpf 	=	$("#cpf").val().trim();
+		var rg 		=	$("#rg").val().trim();
+		var email 	=	$("#email").val().trim();
 		
-		if(login == null || login == '') {
+		if(login === undefined || login == null || login == '') {
 			alert('Preencha o Login');
 			return false;
 		} 
@@ -84,7 +87,7 @@ $(function() {
 			return false;
 		}
 		
-		if(nome == null || nome == '') {
+		if(nome === undefined || nome == null || nome == '') {
 			alert('Preencha o Nome');
 			return false;
 		} 
@@ -94,7 +97,7 @@ $(function() {
 			return false;
 		}
 
-		if(cpf == null || cpf == '') {
+		if(cpf === undefined || cpf == null || cpf == '') {
 			alert('Preencha o CPF');
 			return false;
 		} 
@@ -104,12 +107,12 @@ $(function() {
 			return false;
 		}
 		
-		if(rg == null || rg == '') {
+		if(rg === undefined || rg == null || rg == '') {
 			alert('Preencha o RG');
 			return false;
 		} 
 		
-		if(email == null || email == '') {
+		if(email === undefined || email == null || email == '') {
 			alert('Preencha o Email');
 			return false;
 		} 
@@ -178,11 +181,10 @@ $(function() {
 	}
 	
 	$("#excluirFuncionario").on('click', function() {
-		alert('oi');
-		var desativar = confirm('Tem certeza que deseja excluir o funcionário?');
+
+		var desativar	=	confirm('Tem certeza que deseja excluir o funcionário?');
 
 		if(desativar) {
-			
 			$('form').attr({
 	 			action : 'http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/FuncionarioController&id=${funcionario.id}',
 			    method : 'post'

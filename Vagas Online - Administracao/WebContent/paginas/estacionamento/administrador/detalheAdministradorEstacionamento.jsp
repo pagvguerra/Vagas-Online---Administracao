@@ -16,6 +16,7 @@
 		<title>ESTACIONAMENTO ONLINE - ALTERAÇÃO DE ADMINISTRADOR DE ESTACIONAMENTO</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
+		<script src="${js}/jquery.mask.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/administrador.js" ></script>
 	</head>
@@ -33,19 +34,23 @@
 				Login..: ${administradorEstacionamentoBean.login}
 			</div>
 			<div class="form-group">
-				Nome..: <input class="form-control" type="text" name="nome" id="nome" value="${administradorEstacionamentoBean.nome}" maxlength="">
+				<font color="red">*</font>&nbsp;Nome..:
+				<input class="form-control" type="text" name="nome" id="nome" value="${administradorEstacionamentoBean.nome}" maxlength="100">
 			</div>
 			<div class="form-group">
-				CPF..: <input class="form-control" type="text" name="cpf" id="cpf" value="${administradorEstacionamentoBean.cpf}" maxlength="">
+				<font color="red">*</font>&nbsp;CPF..:
+				<input class="form-control" type="text" name="cpf" id="cpf" value="${administradorEstacionamentoBean.cpf}" maxlength="20">
 			</div>
 			<div class="form-group">
-				RG..: <input class="form-control" type="text" name="rg" id="rg" value="${administradorEstacionamentoBean.rg}" maxlength="">
+				<font color="red">*</font>&nbsp;RG..:
+				<input class="form-control" type="text" name="rg" id="rg" value="${administradorEstacionamentoBean.rg}" maxlength="20">
 			</div>
 			<div class="form-group">
-				Email..: <input class="form-control" type="text" name="email" id="email" value="${administradorEstacionamentoBean.email}" maxlength="">
+				<font color="red">*</font>&nbsp;Email..:
+				<input class="form-control" type="text" name="email" id="email" value="${administradorEstacionamentoBean.email}" maxlength="50">
 			</div>
 			<div class="form-group">
-				Sexo..: 
+				<font color="red">*</font>&nbsp;Sexo..:
 				<select name="sexo" class="form-control">
 					<option value="M" <%if(sexo.equalsIgnoreCase("M")){%>selected<%}%>>Masculino</option>
 					<option value="F" <%if(sexo.equalsIgnoreCase("F")){%>selected<%}%>>Feminino</option>
@@ -57,20 +62,20 @@
 			</div>
 			<br>
 			<div class="form-group">
-				Pergunta 1 ..: Qual a sua cor favorita?
-			<input class="form-control" type="text" name="resposta1" id="resposta1" value="${administradorEstacionamentoBean.resposta1}" maxlength="">
+				<font color="red">*</font>&nbsp;Pergunta 1 ..: Qual a sua cor favorita?
+			<input class="form-control" type="text" name="resposta1" id="resposta1" value="${administradorEstacionamentoBean.resposta1}" maxlength="255">
 			</div>
 			<div class="form-group">
-				Pergunta 2 ..: Qual o nome completo da sua mãe?
-			<input class="form-control" type="text" name="resposta2" id="resposta2" value="${administradorEstacionamentoBean.resposta2}" maxlength="">
+				<font color="red">*</font>&nbsp;Pergunta 2 ..: Qual o nome completo da sua mãe?
+			<input class="form-control" type="text" name="resposta2" id="resposta2" value="${administradorEstacionamentoBean.resposta2}" maxlength="255">
 			</div>
 			<div class="form-group">
-				Pergunta 3 ..: Qual o ano do seu nascimento?
-			<input class="form-control" type="text" name="resposta3" id="resposta3" value="${administradorEstacionamentoBean.resposta3}" maxlength="">
+				<font color="red">*</font>&nbsp;Pergunta 3 ..: Qual o ano do seu nascimento?
+			<input class="form-control" type="text" name="resposta3" id="resposta3" value="${administradorEstacionamentoBean.resposta3}" maxlength="255">
 			</div>
 			<div class="form-group">
-				Pergunta 4 ..: Qual o seu maior hobby?
-			<input class="form-control" type="text" name="resposta4" id="resposta4" value="${administradorEstacionamentoBean.resposta4}" maxlength="">
+				<font color="red">*</font>&nbsp;Pergunta 4 ..: Qual o seu maior hobby?
+			<input class="form-control" type="text" name="resposta4" id="resposta4" value="${administradorEstacionamentoBean.resposta4}" maxlength="255">
 			</div>
 			<br/><br/>
 			<center>

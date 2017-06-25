@@ -72,8 +72,7 @@ public class EstacionamentoBusiness {
 			}
 		
 		} catch (Exception e) {
-			System.out.println("Erro. Mensagem: " + e.getMessage());
-			preencheRetorno(request, response, Mensagens.ERRO_GENERICO, URLs.URL_ERRO_GENERICO);
+			preencheRetorno(request, response, Mensagens.ERRO_GENERICO_BASICO + " " + e.getMessage(), URLs.URL_ERRO_GENERICO);
 		}	
 
 		return urlRetorno;

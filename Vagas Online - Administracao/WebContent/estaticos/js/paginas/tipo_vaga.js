@@ -1,48 +1,56 @@
 $(function() {
 
-	$("#botaoAlterar").on('click', function() {
+    $("#botaoAlterar").on('click', function() {
 
-		var form = $("#formAlterar");
-		var nome = $("#nome").val();
-		var preco = $("#preco").val();
-		
-		if(nome == null || nome == '') {
+		var form	=	$("#formAlterar");
+		var nome	=	$("#nome").val().trim();
+		var preco	=	$("#preco").val().trim();
+		var regra	=	/^[0-99]+$/;
+
+		if(nome === undefined || nome == null || nome == '') {
 			alert('Preencha o Tipo da Vaga');
 			return false;
 		} 
 		
-		if(preco == null || preco == '') {
-			alert('Preencha o preço');
+		if(preco === undefined || preco == null || preco == '') {
+			alert('Preencha o preco');
 			return false;
 		}
-		
-		//VALIDAR SE É NUMERO
-		
+				
+		if (!preco.match(regra)) {
+			alert("Preencha o preco somente com valores inteiros e positivos");
+			return false;
+		}
+
 		form.submit();
 		
 	});
 	
 	$("#botaoInserir").on('click', function() {
 		
-		var form = $("#formCadastrarTipoVagaEstacionamento");
-		var nome = $("#nome").val();
-		var preco = $("#preco").val();
-		
-		if(nome == null || nome == '') {
+		var form	=	$("#formCadastrarTipoVagaEstacionamento");
+		var nome	=	$("#nome").val().trim();
+		var preco	=	$("#preco").val().trim();
+		var regra	=	/^[0-99]+$/;
+
+		if(nome === undefined || nome == null || nome == '') {
 			alert('Preencha o Tipo da Vaga');
 			return false;
 		} 
 		
-		if(preco == null || preco == '') {
-			alert('Preencha o preço');
+		if(preco === undefined || preco == null || preco == '') {
+			alert('Preencha o preco');
 			return false;
-		} 
+		}
 		
-		//VALIDAR SE É NUMERO
+		if (!preco.match(regra)) {
+			alert("Preencha o preco somente com valores inteiros e positivos");
+			return false;
+		}
+		  
 		form.submit();
 	
 	});
-	
 	
 	$("#botaoPrepararInserir").on('click', function() {
 		$('form').attr({
