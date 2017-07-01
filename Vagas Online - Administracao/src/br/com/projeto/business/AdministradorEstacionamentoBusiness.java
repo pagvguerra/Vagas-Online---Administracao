@@ -48,8 +48,7 @@ public class AdministradorEstacionamentoBusiness {
 			}
 		
 		} catch (Exception e) {
-			System.out.println("Erro. Mensagem: " + e.getMessage());
-			preencheRetorno(request, response, Mensagens.ERRO_GENERICO, URLs.URL_ERRO_GENERICO);
+			preencheRetorno(request, response, Mensagens.ERRO_GENERICO_BASICO + " " + e.getMessage(), URLs.URL_ERRO_GENERICO);
 		}	
 
 		return urlRetorno;
@@ -99,7 +98,7 @@ public class AdministradorEstacionamentoBusiness {
 			//Recriando o usuário da session (que é o administrador do estacionamento que acabou de ser alterado)
 			HttpSession session = request.getSession();
 			UsuarioBean usuarioBean = (UsuarioBean) session.getAttribute("usuario");
-			//usuarioBean.setId(usuario);
+
 			usuarioBean.setCpf(administradorEstacionamentoBean.getCpf());
 			usuarioBean.setEmail(administradorEstacionamentoBean.getEmail());
 			usuarioBean.setNome(administradorEstacionamentoBean.getNome());
@@ -165,7 +164,7 @@ public class AdministradorEstacionamentoBusiness {
 	} 
 
 	private void preencheRetorno(HttpServletRequest request, HttpServletResponse response, String mensagem, String url) throws IOException {
-		if(mensagem!=null) {
+		if(mensagem != null) {
 			request.setAttribute("msg", mensagem);
 		}
 

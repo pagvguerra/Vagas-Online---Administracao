@@ -34,10 +34,12 @@
 						<legend>Cadastro de Tipo de Vaga de Estacionamento</legend>
 						<br>
 						<div class="form-group">
-							Tipo da Vaga..: <input class="form-control" type="text" name="nome" id="nome">
+							<font color="red">*</font>&nbsp;Tipo da Vaga..:
+							<input class="form-control" type="text" name="nome" id="nome" maxlength="28">
 						</div>
 						<div class="form-group">
-							Preço..: R$<input class="form-control" type="text" name="preco" id="preco">
+							<font color="red">*</font>&nbsp;Preço..: 
+							R$<input class="form-control" type="number" name="preco" id="preco" min="1" max="99" step="1" maxlength="2">
 						</div>
 						<br/><br/>
 						<center>

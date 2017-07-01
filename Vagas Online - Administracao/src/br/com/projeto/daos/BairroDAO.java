@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projeto.beans.AjaxBeanGenerico;
 import br.com.projeto.beans.BairroBean;
 import br.com.projeto.db.DB;
 
@@ -105,5 +106,39 @@ public class BairroDAO {
 		
 		return listaBairroBean;
 	}
+
+	public List<AjaxBeanGenerico> listaBairrosPorCidade(int idBairro) {
+		Connection conn						=	null;
+		PreparedStatement pstmt				=	null;
+		ResultSet rs						=	null;
+		List<AjaxBeanGenerico> listaBairroBean	=	null;
+
+		try {
+
+			conn	=	DB.getMyqslConnection();
+			pstmt	=	conn.prepareStatement(LISTAR_BAIRRO_POR_CIDADE);
+			pstmt.setInt(1, idBairro);
+			rs		=	pstmt.executeQuery();
+			
+			listaBairroBean 				=	new ArrayList<AjaxBeanGenerico>();
+
+			while(rs.next()) {
+				AjaxBeanGenerico bairroBean	=	new AjaxBeanGenerico();
+				bairroBean.setId(rs.getInt("ID"));
+				bairroBean.setNome(rs.getString("NOME"));
+				listaBairroBean.add(bairroBean);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Erro no metodo listaBairroPorCidade. Pilha: " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			DB.close(conn, pstmt, rs);
+		}
+		
+		return listaBairroBean;
+	}
+
+	
 
 }

@@ -19,7 +19,9 @@
 			<div class="col-sm-4">
 				<fieldset>
 					<div class="form-group">
-						<b>Ocorreu um erro! <br> Entre em contato com o administrador do sistema</b>
+						<b>Ocorreu um erro!</b>
+						<br> 
+						Mensagem: ${msg}
 					</div>
 					<br><br>
 				</fieldset>	

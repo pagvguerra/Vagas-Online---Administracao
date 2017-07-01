@@ -10,7 +10,7 @@ public class DB {
 	public static final String DRIVER_MYSQL				=	"com.mysql.jdbc.Driver";
 	public static final String CONNECTION_STRING_MYSQL	=	"jdbc:mysql://localhost:3306/VagasOnline";
 	public static final String USER_BANCO_MYSQL			=	"root";	
-	public static final String PASS_BANCO_MYSQL			=	"";
+	public static final String PASS_BANCO_MYSQL			=	"root";
 	
 	public static Connection getMyqslConnection() {
 		try {

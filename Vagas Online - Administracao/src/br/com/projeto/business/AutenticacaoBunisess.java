@@ -47,8 +47,7 @@ public class AutenticacaoBunisess {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("Erro. Mensagem: " + e.getMessage());
-			preencheRetorno(request, response, Mensagens.ERRO_GENERICO, URLs.URL_ERRO_GENERICO);
+			preencheRetorno(request, response, Mensagens.ERRO_GENERICO_BASICO + " " + e.getMessage(), URLs.URL_ERRO_GENERICO);
 		}	
 		
 		return urlRetorno;
@@ -145,7 +144,7 @@ public class AutenticacaoBunisess {
 	}
 
 	private void preencheRetorno(HttpServletRequest request, HttpServletResponse response, String mensagem, String url) throws IOException {
-		if(mensagem!=null) {
+		if(mensagem != null) {
 			request.setAttribute("msg", mensagem);
 		}
 		urlRetorno = url;

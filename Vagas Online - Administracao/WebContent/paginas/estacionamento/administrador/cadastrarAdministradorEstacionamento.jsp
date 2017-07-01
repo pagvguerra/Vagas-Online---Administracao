@@ -11,6 +11,7 @@
 		<title>ESTACIONAMENTO ONLINE - CADASTRO DE ADMINISTRADOR DE ESTACIONAMENTO</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
+		<script src="${js}/jquery.mask.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/administrador.js" ></script>
 	</head>
@@ -24,25 +25,31 @@
 						<legend>Cadastro de Administrador de Estacionamento</legend>
 						<br>
 						<div class="form-group">
-							Login..: <input class="form-control" type="text" name="login" id="login">
+							<font color="red">*</font>&nbsp;Login..:
+							<input class="form-control" type="text" name="login" id="login" maxlength="50">
 						</div>
 						<div class="form-group">
-							Senha..: <input class="form-control" type="password" name="senha" id="senha">
+							<font color="red">*</font>&nbsp;Senha..:
+							<input class="form-control" type="password" name="senha" id="senha" maxlength="100">
 						</div>
 						<div class="form-group">
-							Nome..: <input class="form-control" type="text" name="nome" id="nome">
+							<font color="red">*</font>&nbsp;Nome..:
+							<input class="form-control" type="text" name="nome" id="nome" maxlength="100">
 						</div>
 						<div class="form-group">
-							CPF..: <input class="form-control" type="text" name="cpf" id="cpf">
+							<font color="red">*</font>&nbsp;CPF..:
+							<input class="form-control" type="text" name="cpf" id="cpf" maxlength="20">
 						</div>
 						<div class="form-group">
-							RG..: <input class="form-control" type="text" name="rg" id="rg">
+							<font color="red">*</font>&nbsp;RG..:
+							<input class="form-control" type="text" name="rg" id="rg" maxlength="20">
 						</div>
 						<div class="form-group">
-							Email..: <input class="form-control" type="text" name="email" id="email">
+							<font color="red">*</font>&nbsp;Email..:
+							<input class="form-control" type="text" name="email" id="email" maxlength="50">
 						</div>
 						<div class="form-group">
-							Sexo..: 
+							<font color="red">*</font>&nbsp;Sexo..: 
 							<select name="sexo" class="form-control" >
 								<option value="M">Masculino</option>
 								<option value="F">Feminino</option>
@@ -54,20 +61,20 @@
 						</div>
 						<br>
 						<div class="form-group">
-							Pergunta 1 ..: Qual a sua cor favorita?
-							<input class="form-control" type="text" name="resposta1" id="resposta1">
+							<font color="red">*</font>&nbsp;Pergunta 1 ..: Qual a sua cor favorita?
+							<input class="form-control" type="text" name="resposta1" id="resposta1" maxlength="255">
 						</div>
 						<div class="form-group">
-							Pergunta 2 ..: Qual o nome completo da sua mãe?
-							<input class="form-control" type="text" name="resposta2" id="resposta2">
+							<font color="red">*</font>&nbsp;Pergunta 2 ..: Qual o nome completo da sua mãe?
+							<input class="form-control" type="text" name="resposta2" id="resposta2" maxlength="255">
 						</div>
 						<div class="form-group">
-							Pergunta 3 ..: Qual o ano do seu nascimento?
-							<input class="form-control" type="text" name="resposta3" id="resposta3">
+							<font color="red">*</font>&nbsp;Pergunta 3 ..: Qual o ano do seu nascimento?
+							<input class="form-control" type="text" name="resposta3" id="resposta3" maxlength="255">
 						</div>
 						<div class="form-group">
-							Pergunta 4 ..: Qual o seu maior hobby?
-							<input class="form-control" type="text" name="resposta4" id="resposta4">
+							<font color="red">*</font>&nbsp;Pergunta 4 ..: Qual o seu maior hobby?
+							<input class="form-control" type="text" name="resposta4" id="resposta4" maxlength="255">
 						</div>
 						<br/><br/>
 						<center>

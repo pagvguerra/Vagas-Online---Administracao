@@ -1,16 +1,12 @@
 package br.com.projeto.business;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import br.com.projeto.beans.BairroBean;
 import br.com.projeto.beans.CidadeBean;
@@ -73,13 +69,10 @@ public class EstacionamentoBusiness {
 				preencheRetorno(request, response, null, URLs.URL_ERRO_VALIDACAO_USU);
 			} else if(acao.equalsIgnoreCase("PREPARAR_INSERIR")) {	
 				prepararInserir(request, response);
-			}else if(acao.equalsIgnoreCase("BUSCA_ESTADOS")) {	
-				buscaEstadosPorPais(request, response);
 			}
 		
 		} catch (Exception e) {
-			System.out.println("Erro. Mensagem: " + e.getMessage());
-			preencheRetorno(request, response, Mensagens.ERRO_GENERICO, URLs.URL_ERRO_GENERICO);
+			preencheRetorno(request, response, Mensagens.ERRO_GENERICO_BASICO + " " + e.getMessage(), URLs.URL_ERRO_GENERICO);
 		}	
 
 		return urlRetorno;
@@ -294,53 +287,6 @@ public class EstacionamentoBusiness {
 		}
 
 		urlRetorno = url;
-	}
-	
-	private void buscaEstadosPorPais(HttpServletRequest request,HttpServletResponse response) {
-		
-		String strIdPais 	= request.getParameter("idPais");
-		int idPais 			= "".equals(strIdPais) ? 0 : Integer.parseInt(strIdPais);
-		
-		List<EstadoBean> listaEstado	=	new EstadoDAO().listaEstadosPorPais(idPais );
-		
-		JSONObject json 	= new JSONObject();
-		JSONArray jsonItems = new JSONArray();
-		try {
-			
-			for (EstadoBean e : listaEstado) {
-				JSONObject j = new JSONObject();
-				j.put("id", e.getId());
-				j.put("nome", e.getNome());
-				jsonItems.put(j);
-			}
-			json.put("itens", jsonItems);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			try {
-				printJSON(response, json);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-	}
-	
-	public static void printJSON(HttpServletResponse response, Object json) throws IOException {
-		PrintWriter writer = null;
-		try {
-			response.setContentType("text/json;charset=ISO-8859-1");
-			writer = response.getWriter();
-			writer.print(json);
-		} catch (IOException e) {
-			throw (e);
-		} finally {
-			if (writer != null) {
-				writer.close();
-			}
-			writer = null;
-		}
 	}
 	
 }

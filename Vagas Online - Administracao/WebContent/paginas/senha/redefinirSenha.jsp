@@ -27,30 +27,32 @@
 
 						<!-- LOGIN -->
 						<div class="form-group">
-							<b>Login..:</b> <input type="text" name="LOGIN" id="login" maxlength="50" class="form-control" placeholder="INFORME O LOGIN">
+							<font color="red">*</font>&nbsp;<b>Login..:</b>
+							<input type="text" name="LOGIN" id="login" maxlength="50" class="form-control" placeholder="INFORME O LOGIN">
 						</div>	
 						
 						<!-- SENHA -->
 						<div class="form-group">
-							<b>Senha..:</b> <input type="password" name="SENHA" id="senha" maxlength="100" class="form-control" placeholder="INFORME A NOVA SENHA">
+							<font color="red">*</font>&nbsp;<b>Senha..:</b>
+							<input type="password" name="SENHA" id="senha" maxlength="100" class="form-control" placeholder="INFORME A NOVA SENHA">
 						</div>
 						
 						<br><br>
 						<div class="form-group">
-							Pergunta 1 ..: Qual a sua cor favorita?
-							<input class="form-control" type="text" name="resposta1" id="resposta1">
+							<font color="red">*</font>&nbsp;Pergunta 1 ..: Qual a sua cor favorita?
+							<input class="form-control" type="text" name="resposta1" id="resposta1" maxlength="255">
 						</div>
 						<div class="form-group">
-							Pergunta 2 ..: Qual o nome completo da sua mãe?
-							<input class="form-control" type="text" name="resposta2" id="resposta2">
+							<font color="red">*</font>&nbsp;Pergunta 2 ..: Qual o nome completo da sua mãe?
+							<input class="form-control" type="text" name="resposta2" id="resposta2" maxlength="255">
 						</div>
 						<div class="form-group">
-							Pergunta 3 ..: Qual o ano do seu nascimento?
-							<input class="form-control" type="text" name="resposta3" id="resposta3">
+							<font color="red">*</font>&nbsp;Pergunta 3 ..: Qual o ano do seu nascimento?
+							<input class="form-control" type="text" name="resposta3" id="resposta3" maxlength="255">
 						</div>
 						<div class="form-group">
-							Pergunta 4 ..: Qual o seu maior hobby?
-							<input class="form-control" type="text" name="resposta4" id="resposta4">
+							<font color="red">*</font>&nbsp;Pergunta 4 ..: Qual o seu maior hobby?
+							<input class="form-control" type="text" name="resposta4" id="resposta4" maxlength="255">
 						</div>
 						<br><br>
 						

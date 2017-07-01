@@ -16,6 +16,7 @@
 		<title>ESTACIONAMENTO ONLINE - ALTERAÇÃO DE FUNCIONÁRIO DE ESTACIONAMENTO</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
+		<script src="${js}/jquery.mask.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/funcionario.js" ></script>
 	</head>
@@ -32,25 +33,30 @@
 			<input type="hidden" name="idEstacionamento" id="idEstacionamento" value="${idEstacionamento}">
 			<br>
 			<div class="form-group">
-				Login..: <input class="form-control" type="text" name="login" id="login" value="${funcionarioBean.nome}" maxlength="">
+				<font color="red">*</font>&nbsp;Login..:
+				<input class="form-control" type="text" name="login" id="login" value="${funcionarioBean.login}" maxlength="50">
 			</div>
 			<div class="form-group">
 				Senha..: ${funcionarioBean.senha}
 			</div>
 			<div class="form-group">
-				Nome..: <input class="form-control" type="text" name="nome" id="nome" value="${funcionarioBean.nome}" maxlength="">
+				<font color="red">*</font>&nbsp;Nome..:
+				<input class="form-control" type="text" name="nome" id="nome" value="${funcionarioBean.nome}" maxlength="100">
 			</div>
 			<div class="form-group">
-				CPF..: <input class="form-control" type="text" name="cpf" id="cpf" value="${funcionarioBean.cpf}" maxlength="">
+				<font color="red">*</font>&nbsp;CPF..:
+				<input class="form-control" type="text" name="cpf" id="cpf" value="${funcionarioBean.cpf}" maxlength="20">
 			</div>
 			<div class="form-group">
-				RG..: <input class="form-control" type="text" name="rg" id="rg" value="${funcionarioBean.rg}" maxlength="">
+				<font color="red">*</font>&nbsp;RG..:
+				<input class="form-control" type="text" name="rg" id="rg" value="${funcionarioBean.rg}" maxlength="20">
 			</div>
 			<div class="form-group">
-				Email..: <input class="form-control" type="text" name="email" id="email" value="${funcionarioBean.email}" maxlength="">
+				<font color="red">*</font>&nbsp;Email..:
+				<input class="form-control" type="text" name="email" id="email" value="${funcionarioBean.email}" maxlength="50">
 			</div>
 			<div class="form-group">
-				Sexo..: 
+				<font color="red">*</font>&nbsp;Sexo..:
 				<select name="sexo" class="form-control">
 					<option value="M" <%if(sexo.equalsIgnoreCase("M")){%>selected<%}%>>Masculino</option>
 					<option value="F" <%if(sexo.equalsIgnoreCase("F")){%>selected<%}%>>Feminino</option>

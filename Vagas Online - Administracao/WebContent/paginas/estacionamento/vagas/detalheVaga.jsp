@@ -20,6 +20,7 @@
 		<title>ESTACIONAMENTO ONLINE - ALTERAÇÃO DE VAGA DE ESTACIONAMENTO</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
+		<script src="${js}/jquery.mask.js" ></script>		
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/vaga.js" ></script>
 	</head>
@@ -37,10 +38,11 @@
 						<legend>Alteração de Vaga de Estacionamento</legend>
 						<br>
 						<div class="form-group">
-							Código..: <input class="form-control" type="text" name="codigo" id="codigo" value="${vagaBean.codigo}">
+							<font color="red">*</font>&nbsp;Código..:
+							<input class="form-control" type="text" name="codigo" id="codigo" value="${vagaBean.codigo}">
 						</div>
 						<div class="form-group">
-							Tipo da Vaga..:
+							<font color="red">*</font>&nbsp;Tipo da Vaga..:
 							<select name="tipoVaga" class="form-control" >
 								<% for(int i=0; i<listaTipoVagaBean.size(); i++) { 
 										TipoVagaBean tipoVagaBean = (TipoVagaBean) listaTipoVagaBean.get(i); %>	
@@ -49,13 +51,16 @@
 							</select>
 						</div>
 						<div class="form-group">
-							Altura..: <input class="form-control" type="number" name="altura" id="altura" min="1" max="100" step="1" value="${vagaBean.altura}">
+							<font color="red">*</font>&nbsp;Altura..:
+							<input class="form-control" type="number" name="altura" id="altura" min="1" max="99" maxlength="2" step="1" value="${vagaBean.altura}">
 						</div>
 						<div class="form-group">
-							Largura..: <input class="form-control" type="number" name="largura" id="largura" min="1" max="100" step="1" value="${vagaBean.largura}">
+							<font color="red">*</font>&nbsp;Largura..:
+							<input class="form-control" type="number" name="largura" id="largura" min="1" max="99" maxlength="2" step="1" value="${vagaBean.largura}">
 						</div>
 						<div class="form-group">
-							Comprimento..: <input class="form-control" type="number" name="comprimento" id="comprimento" min="1" max="100" step="1" value="${vagaBean.comprimento}">
+							<font color="red">*</font>&nbsp;Comprimento..:
+							<input class="form-control" type="number" name="comprimento" id="comprimento" min="1" max="99" maxlength="2" step="1" value="${vagaBean.comprimento}">
 						</div>
 						<br/><br/>
 						<center>

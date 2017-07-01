@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projeto.beans.AjaxBeanGenerico;
 import br.com.projeto.beans.EstadoBean;
 import br.com.projeto.db.DB;
 
@@ -73,12 +74,12 @@ public class EstadoDAO {
 		return listaEstadoBean;
 	}
 	
-	public List<EstadoBean> listaEstadosPorPais(int idPais) {
+	public List<AjaxBeanGenerico> listaEstadosPorPais(int idPais) {
 		
 		Connection conn						=	null;
 		PreparedStatement pstmt				=	null;
 		ResultSet rs						=	null;
-		List<EstadoBean> listaEstadoBean	=	null;
+		List<AjaxBeanGenerico> listaEstadoBean	=	null;
 
 		try {
 
@@ -87,10 +88,10 @@ public class EstadoDAO {
 			pstmt.setInt(1, idPais);
 			rs		=	pstmt.executeQuery();
 			
-			listaEstadoBean 				=	new ArrayList<EstadoBean>();
+			listaEstadoBean 				=	new ArrayList<AjaxBeanGenerico>();
 
 			while(rs.next()) {
-				EstadoBean estadoBean		=	new EstadoBean();
+				AjaxBeanGenerico estadoBean		=	new AjaxBeanGenerico();
 				estadoBean.setId(rs.getInt("ID"));
 				estadoBean.setNome(rs.getString("NOME"));
 				listaEstadoBean.add(estadoBean);

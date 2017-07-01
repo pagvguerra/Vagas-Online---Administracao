@@ -2,12 +2,14 @@ $(function() {
 
 	$("#botaoAlterar").on('click', function() {
 
-		var form = $("#formAlterar");
-		var codigo = $("#codigo").val();
-		var largura = $("#largura").val();
-		var altura = $("#altura").val();
+		var form		=	$("#formAlterar");
+		var codigo		=	$("#codigo").val().trim();
+		var largura 	=	$("#largura").val().trim();
+		var altura 		=	$("#altura").val().trim();
+		var comprimento	=	$("#comprimento").val().trim();
+		var regra		=	/^[0-99]+$/;
 
-		if(codigo == null || codigo == '') {
+		if(codigo === undefined || codigo == null || codigo == '') {
 			alert('Preencha o codigo');
 			return false;
 		} 
@@ -17,28 +19,50 @@ $(function() {
 			return false;
 		}
 		
-		if(largura == null || largura == '') {
+		if(largura === undefined || largura == null || largura == '') {
 			alert('Preencha a Largura');
 			return false;
-		} 
+		}
 		
-		if(altura == null || altura == '') {
+		if (!largura.match(regra)) {
+			alert("Preencha a largura somente com valores inteiros e positivos");
+			return false;
+		}
+		
+		if(altura === undefined || altura == null || altura == '') {
 			alert('Preencha a altura');
 			return false;
 		} 
-		
+
+		if (!altura.match(regra)) {
+			alert("Preencha a altura somente com valores inteiros e positivos");
+			return false;
+		}
+
+		if(comprimento === undefined || comprimento == null || comprimento == '') {
+			alert('Preencha o comprimento');
+			return false;
+		} 
+
+		if (!comprimento.match(regra)) {
+			alert("Preencha o comprimento somente com valores inteiros e positivos");
+			return false;
+		}
+
 		form.submit();
 		
 	});
 	
 	$("#botaoInserir").on('click', function() {
 		
-		var form = $("#formCadastrarVagaEstacionamento");
-		var codigo = $("#codigo").val();
-		var largura = $("#largura").val();
-		var altura = $("#altura").val();
+		var form	=	$("#formCadastrarVagaEstacionamento");
+		var codigo	=	$("#codigo").val().trim();
+		var largura =	$("#largura").val().trim();
+		var altura	=	$("#altura").val().trim();
+		var comprimento	=	$("#comprimento").val().trim();
+		var regra	=	/^[0-99]+$/;
 
-		if(codigo == null || codigo == '') {
+		if(codigo === undefined || codigo == null || codigo == '') {
 			alert('Preencha o codigo');
 			return false;
 		} 
@@ -48,15 +72,35 @@ $(function() {
 			return false;
 		}
 		
-		if(largura == null || largura == '') {
+		if(largura === undefined || largura == null || largura == '') {
 			alert('Preencha a Largura');
 			return false;
-		} 
+		}
 		
-		if(altura == null || altura == '') {
+		if (!largura.match(regra)) {
+			alert("Preencha a largura somente com valores inteiros e positivos");
+			return false;
+		}
+		
+		if(altura === undefined || altura == null || altura == '') {
 			alert('Preencha a altura');
 			return false;
 		} 
+
+		if (!altura.match(regra)) {
+			alert("Preencha a altura somente com valores inteiros e positivos");
+			return false;
+		}
+		
+		if(comprimento === undefined || comprimento == null || comprimento == '') {
+			alert('Preencha o comprimento');
+			return false;
+		} 
+
+		if (!comprimento.match(regra)) {
+			alert("Preencha o comprimento somente com valores inteiros e positivos");
+			return false;
+		}
 
 		form.submit();
 	
@@ -108,7 +152,6 @@ $(function() {
 		 $('form').submit();
 	});
 
-	
 	$("#botaoGerenciarTipoVaga").on('click', function() {
 		$('form').attr({
 		 	action : 'http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/TipoVagaController',

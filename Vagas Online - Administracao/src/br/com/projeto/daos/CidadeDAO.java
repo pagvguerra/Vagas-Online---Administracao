@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.projeto.beans.AjaxBeanGenerico;
 import br.com.projeto.beans.CidadeBean;
 import br.com.projeto.db.DB;
 
@@ -98,6 +99,38 @@ public class CidadeDAO {
 			
 		} catch (Exception e) {
 			System.out.println("Erro no metodo listaCidadePorEstado. Pilha: " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			DB.close(conn, pstmt, rs);
+		}
+		
+		return listaCidadeBean;
+	}
+
+	public List<AjaxBeanGenerico> listaCidadesPorEstado(int idEstado) {
+		Connection conn						=	null;
+		PreparedStatement pstmt				=	null;
+		ResultSet rs						=	null;
+		List<AjaxBeanGenerico> listaCidadeBean	=	null;
+
+		try {
+
+			conn	=	DB.getMyqslConnection();
+			pstmt	=	conn.prepareStatement(LISTAR_CIDADE_POR_ESTADO);
+			pstmt.setInt(1, idEstado);
+			rs		=	pstmt.executeQuery();
+			
+			listaCidadeBean 				=	new ArrayList<AjaxBeanGenerico>();
+
+			while(rs.next()) {
+				AjaxBeanGenerico cidadeBean	=	new AjaxBeanGenerico();
+				cidadeBean.setId(rs.getInt("ID"));
+				cidadeBean.setNome(rs.getString("NOME"));
+				listaCidadeBean.add(cidadeBean);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Erro no metodo listaCidadesPorEstado. Pilha: " + e.getMessage());
 			e.printStackTrace();
 		} finally {
 			DB.close(conn, pstmt, rs);
