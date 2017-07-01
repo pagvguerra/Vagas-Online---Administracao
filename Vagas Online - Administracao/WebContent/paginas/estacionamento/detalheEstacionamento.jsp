@@ -26,7 +26,6 @@
 		<title>ESTACIONAMENTO ONLINE</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
-		<script src="${js}/jquery.mask.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/estacionamento.js" ></script>
 	</head>
