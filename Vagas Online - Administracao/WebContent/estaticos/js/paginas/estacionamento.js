@@ -1,7 +1,5 @@
 $(function() {
 
-	var caminhoAjaxLoad = "http://localhost:8080/Vagas Online - Administracao/WebContent/estaticos/images/icon_loading.gif";
-
 	//funções para ajax da tabela de endereços do estacionamento
 	$("select[name=pais]").on('change', function() {
 		$("#divBairros").html("<select name='bairro' id='idBairros' class='form-control'><option value='0'>SELECIONE</option></select>");
@@ -38,8 +36,7 @@ $(function() {
 
 				$("#divBairros").html(select);
 			
-			}, "json"),
-			$("#divBairros").html(caminhoAjaxLoad));
+			}, "json"));
 	}
 
 	function carregaCidades() {
@@ -64,8 +61,7 @@ $(function() {
 				$("#divCidades").html(select);
 				$("#idCidade").change(carregaBairros);
 			
-			}, "json"),
-			$("#divCidades").html(caminhoAjaxLoad));
+			}, "json"));
 	}
 
 	function carregaEstados() {
@@ -90,8 +86,7 @@ $(function() {
 				$("#divEstados").html(select);
 				$("#idEstado").change(carregaCidades);
 				
-			}, "json"),
-			$("#divEstados").html(caminhoAjaxLoad));
+			}, "json"));
 	}
 	
 	$("#cadastrarEstacionamento").on('click', function() {
