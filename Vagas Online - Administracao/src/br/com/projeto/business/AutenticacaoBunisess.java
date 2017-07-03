@@ -81,10 +81,13 @@ public class AutenticacaoBunisess {
 				return;
 			}
 			
-			usuarioBean.setSenha(Util.criptografa(request.getParameter(CAMPO_SENHA).trim()));
+			String senha = request.getParameter(CAMPO_SENHA).trim();
+			usuarioBean.setSenha(Util.criptografa(senha));
 			boolean alterouSenha = new AutenticacaoDAO().redefineSenhaPorLogin(usuarioBean);
 			
 			if(alterouSenha) {
+				//Envio de email a administrador na redefinição de senha
+				enviarEmail(usuarioBean.getEmail(), senha);
 				preencheRetorno(request, response, null, URLs.URL_REPOSTA_REDEFINIR_SENHA);
 			} else {
 				preencheRetorno(request, response, Mensagens.USUARIO_NAO_ENCONTRADO, URLs.URL_ERRO_REDEFINIR_SENHA);
@@ -148,6 +151,15 @@ public class AutenticacaoBunisess {
 			request.setAttribute("msg", mensagem);
 		}
 		urlRetorno = url;
+	}
+	
+	private void enviarEmail(String emailDestinatario, String senha) {
+		try {
+			String emailServidor = "pagvguerra@gmail.com";
+			Util.enviaEmail(emailServidor, emailDestinatario, senha);
+		} catch(Exception e) {
+			System.out.println("Erro ao enviar email");
+		}
 	}
 	
 }

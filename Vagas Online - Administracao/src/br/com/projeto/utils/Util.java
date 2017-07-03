@@ -17,9 +17,17 @@ import java.util.regex.Pattern;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.mail.PasswordAuthentication;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -31,34 +39,34 @@ public class Util{
 
 	public static final String comAcento = "Á«·ÈÌÛ˙˝¡…Õ”⁄›‡ËÏÚ˘¿»Ã“Ÿ„ıÒ‰ÎÔˆ¸ˇƒÀœ÷‹√’—‚ÍÓÙ˚¬ Œ‘€";  
 	public static final String semAcento = "cCaeiouyAEIOUYaeiouAEIOUaonaeiouyAEIOUAONaeiouAEIOU";
-	
+
 	public static String geraSenhaAleatoria() {
 		UUID uuid = UUID.randomUUID();  
 		String myRandom = uuid.toString();  
 		return myRandom.substring(0,7);
 	}
-	
+
 	public boolean validarTamanhaMaximoCampo(String campo, int tam) {
 		if(campo.length() <= tam)
 			return true;
 		return false;
 	}
 
-    
+
 	public static boolean isEmpty(String str, boolean trim) {
 		if ( str == null || str.equals("") || ( trim && str.trim( ).equals( "" )) ) { 
 			return true;
 		}
 		return false;
 	}
-	
+
 	public static String resgataParamString(HttpServletRequest request, String param){
 		String campo = request.getParameter(param);
 		if (request != null && campo != null)
 			return campo;
 		return "";		
 	}	
-	
+
 	public static String[] getProperties(Class<?> classe, String nomeArq, String param) {
 		String[] dados = new String[]{};
 
@@ -163,7 +171,7 @@ public class Util{
 		}
 		return txt;
 	}
-	
+
 	public static void exportarCSV(HttpServletResponse response, List<String[]> lstResultado, SimpleDateFormat sdf, String... config){
 
 		String newRow = "\r\n";
@@ -275,7 +283,7 @@ public class Util{
 		return mascara.replaceAll("#", "");   
 	}
 
-	
+
 	public static String formataCEP(String val) throws Exception {
 		String valor = val;
 		if( valor == null ) {
@@ -343,7 +351,7 @@ public class Util{
 		}
 		return false;
 	}
-	
+
 	public static String getSubString(String str, int size, boolean start){
 		if (str != null && !str.equals("") &&  size <= str.length()){
 			if (start)
@@ -353,7 +361,7 @@ public class Util{
 		}
 		return str;
 	}
-		
+
 	public static String criptografa(String texto) throws Exception {
 		if (texto == null) {
 			return null;
@@ -372,7 +380,7 @@ public class Util{
 
 		return resposta;
 	}
-	
+
 	public static String descriptografa(String texto) throws Exception  
 	{
 		if(texto == null) {
@@ -397,7 +405,7 @@ public class Util{
 
 		return new String(original);
 	}
-	
+
 	public static String onlyNumbers( String str ) {
 		if ( str == null ) {
 			return null;
@@ -461,14 +469,14 @@ public class Util{
 		//comparar o digito verificador do cpf com o primeiro resto + o segundo resto.
 		return nDigVerific.equals(nDigResult);
 	}
-	
+
 	public static boolean isEmpty( String[] array ) {
 		if ( array == null || array.length == 0 || array[0].toString().equals("") )  {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public static boolean isEmpty( List<String> lst ) {
 		if ( lst == null || lst.isEmpty() )  {
 			return true;
@@ -539,7 +547,7 @@ public class Util{
 		}
 		return false;
 	}
-	
+
 	public static List<String> split(String str, String delimitador) throws Exception {		
 		String aux[] =	null;		
 		try{
@@ -549,5 +557,40 @@ public class Util{
 			throw e;
 		}
 	}
-	
+
+	public static void enviaEmail (String emailRemetente, String emailDestinatario, String senha) {
+		
+		try {
+
+			Properties props = new Properties();
+			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.socketFactory.port", "465");
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.port", "465");
+
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() 
+				{
+					return new PasswordAuthentication("pagvguerra@gmail.com", "papablo1983");
+				}
+			});
+			
+			/** Ativa Debug para sess„o */
+			session.setDebug(true);
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(emailRemetente)); //Remetente
+			Address[] toUser = InternetAddress.parse(emailDestinatario);  //Para
+			message.setRecipients(Message.RecipientType.TO, toUser);
+			message.setSubject("Envio de Senha de Entrada para sistema de Funcion·rio");//Assunto
+			message.setText("Sua Senha È:" + senha) ; //Mensagem
+			Transport.send(message);
+			System.out.println("Feito!!!");
+			
+		} catch (MessagingException e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+	}
+
 }

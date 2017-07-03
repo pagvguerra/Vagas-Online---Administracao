@@ -36,9 +36,6 @@
 				<input class="form-control" type="text" name="login" id="login" value="${funcionarioBean.login}" maxlength="50">
 			</div>
 			<div class="form-group">
-				Senha..: ${funcionarioBean.senha}
-			</div>
-			<div class="form-group">
 				<font color="red">*</font>&nbsp;Nome..:
 				<input class="form-control" type="text" name="nome" id="nome" value="${funcionarioBean.nome}" maxlength="100">
 			</div>
