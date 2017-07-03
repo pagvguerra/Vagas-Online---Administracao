@@ -1,8 +1,8 @@
 $(function() {
 
 	//Aplicando as máscaras
-	$("#cpf").mask('000.000.000-00', {reverse: true} );
-    $('#rg').mask('99.999.999-9');
+	//$("#cpf").mask('000.000.000-00', {reverse: true} );
+    //$('#rg').mask('99.999.999-9');
     
 	$("#botaoAlterar").on('click', function() {
 		var nome		=	$("#nome").val().trim();

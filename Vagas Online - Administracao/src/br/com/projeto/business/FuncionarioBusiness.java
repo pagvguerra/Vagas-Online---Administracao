@@ -115,6 +115,10 @@ public class FuncionarioBusiness {
 			new FuncionarioDAO().alterar(funcionarioBean);
 			int idEstacionamento = Integer.parseInt(request.getParameter("idEstacionamento"));
 			request.setAttribute("idEstacionamento", idEstacionamento);
+			//Envio de email a funcionario
+			String senha = Util.geraSenhaAleatoria();
+			funcionarioBean.setSenha(Util.criptografa(senha));
+			enviarEmail(funcionarioBean.getEmail(), senha);
 			preencheRetorno(request, response, "Funcionario atualizado com sucesso", URLs.URL_SUCESSO_ALTERAR_FUNCIONARIO);
 		} catch (Exception e) {
 			throw e;
@@ -128,7 +132,8 @@ public class FuncionarioBusiness {
 			request.setAttribute("idEstacionamento", idEstacionamento);
 			
 			FuncionarioBean funcionarioBean = retornaDadosFuncionario(request, false);
-			funcionarioBean.setSenha(Util.criptografa(Util.geraSenhaAleatoria()));
+			String senha = Util.geraSenhaAleatoria();
+			funcionarioBean.setSenha(Util.criptografa(senha));
 			boolean cadastrou = new FuncionarioDAO().inserir(funcionarioBean);
 			
 			if(!cadastrou) {
@@ -147,10 +152,22 @@ public class FuncionarioBusiness {
 			funcionarioBean.setId(new FuncionarioDAO().buscarIdFuncionarioPorCPFdoFuncionario(funcionarioBean.getCpf()));
 			new FuncionarioDAO().atualizarEstacionamentoNoFuncionario(funcionarioBean);
 			
+			//Envio de email a funcionario
+			enviarEmail(funcionarioBean.getEmail(), senha);
+
 			preencheRetorno(request, response, "Funcionario inserido com sucesso", URLs.URL_SUCESSO_CADASTRAR_FUNCIONARIO);
 			
 		} catch (Exception e) {
 			throw e;
+		}
+	}
+
+	private void enviarEmail(String emailDestinatario, String senha) {
+		try {
+			String emailServidor = "pagvguerra@gmail.com";
+			Util.enviaEmail(emailServidor, emailDestinatario, senha);
+		} catch(Exception e) {
+			System.out.println("Erro ao enviar email");
 		}
 	}
 	

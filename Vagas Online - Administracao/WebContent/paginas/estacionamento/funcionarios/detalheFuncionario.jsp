@@ -16,7 +16,6 @@
 		<title>ESTACIONAMENTO ONLINE - ALTERAÇÃO DE FUNCIONÁRIO DE ESTACIONAMENTO</title>
 		<link href="${css_bootstrap}/bootstrap.min.css" rel="stylesheet">
 		<script src="${js}/jquery-2.1.1.min.js" ></script>
-		<script src="${js}/jquery.mask.js" ></script>
 		<script src="${js}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${jspaginas}/funcionario.js" ></script>
 	</head>
@@ -35,9 +34,6 @@
 			<div class="form-group">
 				<font color="red">*</font>&nbsp;Login..:
 				<input class="form-control" type="text" name="login" id="login" value="${funcionarioBean.login}" maxlength="50">
-			</div>
-			<div class="form-group">
-				Senha..: ${funcionarioBean.senha}
 			</div>
 			<div class="form-group">
 				<font color="red">*</font>&nbsp;Nome..:

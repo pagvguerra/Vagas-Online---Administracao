@@ -104,7 +104,7 @@ public class AdministradorEstacionamentoBusiness {
 			usuarioBean.setNome(administradorEstacionamentoBean.getNome());
 			usuarioBean.setSexo(administradorEstacionamentoBean.getSexo());
 			session.setAttribute("usuario", usuarioBean);
-			
+
 			preencheRetorno(request, response, "Administrador de Estacionamento atualizado com sucesso", URLs.URL_SUCESSO_ALTERAR_ADM_ESTACIONAMENTO);
 		} catch (Exception e) {
 			throw e;
@@ -114,13 +114,16 @@ public class AdministradorEstacionamentoBusiness {
 	private void inserirAdministradorEstacionamento(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try {
 			AdministradorEstacionamentoBean administradorEstacionamentoBean = retornaDadosAdministradorEstacionamento(request, false);
+			String senha = administradorEstacionamentoBean.getSenha();
 			administradorEstacionamentoBean.setSenha(Util.criptografa(administradorEstacionamentoBean.getSenha()));
 			boolean cadastrou = new AdministradorEstacionamentoDAO().inserir(administradorEstacionamentoBean);
 			
 			if(!cadastrou) {
 				throw new Exception("Erro ao inserir o Administrador de Estacionamento " + administradorEstacionamentoBean.getNome());
 			}
-			
+						
+			//Envio de email a administrador
+			enviarEmail(administradorEstacionamentoBean.getEmail(), senha);
 			preencheRetorno(request, response, "Administrador de Estacionamento inserido com sucesso", URLs.URL_SUCESSO_CADASTRO_ADM_ESTACIONAMENTO);
 		} catch (Exception e) {
 			throw e;
@@ -130,15 +133,20 @@ public class AdministradorEstacionamentoBusiness {
 	public AdministradorEstacionamentoBean retornaDadosAdministradorEstacionamento(HttpServletRequest request, boolean pegaId) {
 		int id				=	0;
 		
-		if(pegaId)
+		String login		=	"";
+		String senha 		=	"";
+		
+		if(pegaId) {
 			id				=	Integer.parseInt(request.getParameter("id"));
+		} else {
+			login			=	request.getParameter("login").trim();
+			senha 			=	request.getParameter("senha").trim();
+		}
 		
 		String cpf			=	request.getParameter("cpf").trim();
 		String email		=	request.getParameter("email").trim();
-		String login		=	request.getParameter("login").trim();
 		String nome			=	request.getParameter("nome").trim();
 		String rg			=	request.getParameter("rg").trim();
-		String senha 		=	request.getParameter("senha").trim();
 		String sexo 		=	request.getParameter("sexo");
 		String resposta1	=	request.getParameter("resposta1").trim();
 		String resposta2	=	request.getParameter("resposta2").trim();
@@ -150,10 +158,17 @@ public class AdministradorEstacionamentoBusiness {
 		administradorEstacionamentoBean.setPerfil(PerfilEnum.ADMINISTRADOR_ESTACIONAMENTO.getCodigo());
 		administradorEstacionamentoBean.setCpf(cpf);
 		administradorEstacionamentoBean.setEmail(email);
-		administradorEstacionamentoBean.setLogin(login);
+
+		if(!login.equals("")) {
+			administradorEstacionamentoBean.setLogin(login);
+		}
+			
+		if(!senha.equals("")) {
+			administradorEstacionamentoBean.setSenha(senha);
+		}
+		
 		administradorEstacionamentoBean.setNome(nome);
 		administradorEstacionamentoBean.setRg(rg);
-		administradorEstacionamentoBean.setSenha(senha);
 		administradorEstacionamentoBean.setSexo(sexo);
 		administradorEstacionamentoBean.setResposta1(resposta1);
 		administradorEstacionamentoBean.setResposta2(resposta2);
@@ -170,5 +185,13 @@ public class AdministradorEstacionamentoBusiness {
 
 		urlRetorno = url;
 	}
-	
+
+	private void enviarEmail(String emailDestinatario, String senha) {
+		try {
+			String emailServidor = "pagvguerra@gmail.com";
+			Util.enviaEmail(emailServidor, emailDestinatario, senha);
+		} catch(Exception e) {
+			System.out.println("Erro ao enviar email");
+		}
+	}
 }

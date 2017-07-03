@@ -9,7 +9,7 @@ import br.com.projeto.db.DB;
 
 public class UsuarioDAO {
 
-	private static final String BUSCA_USUARIO_POR_LOGIN 	= 	"SELECT ID FROM USUARIO WHERE LOGIN = ?";
+	private static final String BUSCA_USUARIO_POR_LOGIN 	= 	"SELECT ID, EMAIL FROM USUARIO WHERE LOGIN = ?";
 	private static final String VALIDAR_RESPOSTAS_USUARIO 	=	"SELECT 1 FROM USUARIO_RESPOSTA WHERE ID_USUARIO = ? AND RESPOSTA1 = ? AND RESPOSTA2 = ? AND RESPOSTA3 = ? AND RESPOSTA4 = ?";
 
 	public UsuarioBean buscarPorLogin(String login) {
@@ -28,6 +28,7 @@ public class UsuarioDAO {
 			if(rs.next()) {
 				usuarioBean		=	new UsuarioBean();
 				usuarioBean.setId(rs.getInt("ID"));
+				usuarioBean.setEmail(rs.getString("EMAIL"));
 			}
 		} catch (Exception e) {
 			System.out.println("Erro no metodo buscaPorLogin. Pilha: " + e.getMessage());
