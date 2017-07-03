@@ -13,9 +13,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import br.com.projeto.beans.AjaxBeanGenerico;
+import br.com.projeto.beans.EnderecoCorreios;
 import br.com.projeto.daos.BairroDAO;
 import br.com.projeto.daos.CidadeDAO;
 import br.com.projeto.daos.EstadoDAO;
+import br.com.projeto.utils.CorreiosAPI;
 
 public class AjaxController extends HttpServlet {
 
@@ -40,6 +42,8 @@ public class AjaxController extends HttpServlet {
 				buscaCidadesPorEstado(request, response);
 			} else if(acao.equalsIgnoreCase("BUSCA_BAIRROS")) {	
 				buscaBairrosPorCidade(request, response);
+			}else if(acao.equalsIgnoreCase("CARREGA_LOGRADOURO")) {	
+				buscaLogradouroPorCep(request, response);
 			}
 		
 		} catch (Exception e) {
@@ -67,6 +71,26 @@ public class AjaxController extends HttpServlet {
 		int idCidade 		= "".equals(strIdCidade) ? 0 : Integer.parseInt(strIdCidade);
 		List<AjaxBeanGenerico> listaBairro	=	new BairroDAO().listaBairrosPorCidade(idCidade);
 		populaListaGenericaAjax(listaBairro, response);
+	}
+	
+	private void buscaLogradouroPorCep(HttpServletRequest request, HttpServletResponse response) {
+		
+		JSONObject json 	= new JSONObject();
+		
+		try {
+			
+			EnderecoCorreios end = new CorreiosAPI().buscaEnderecoPorCEP(request.getParameter("cep"));
+			json.put("logradouro", end.getLogradouro());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				printJSON(response, json);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void populaListaGenericaAjax(List<AjaxBeanGenerico> lista, HttpServletResponse response) throws Exception {

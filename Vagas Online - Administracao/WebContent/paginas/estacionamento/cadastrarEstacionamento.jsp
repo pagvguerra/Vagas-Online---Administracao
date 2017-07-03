@@ -87,17 +87,6 @@
 								<font color="red">*</font>&nbsp;Cep..: <input class="form-control" type="text" name="cep" id="cep" maxlength="10">
 							</div>
 							<div class="form-group">
-							<font color="red">*</font>&nbsp;Tipo de Logradouro..: 
-								<c:if test="${not empty listaTipoLogradouro}">
-									<select id="tipoLogradouro" name="tipoLogradouro" class="form-control" >
-										<option value="0">SELECIONE</option>
-										<c:forEach var="tipoLogradouro" items="${listaTipoLogradouro}" >
-											<option value="${tipoLogradouro.id}">${tipoLogradouro.nome}</option>
-										</c:forEach>	
-									</select>
-								</c:if>	
-							</div>
-							<div class="form-group">
 								<font color="red">*</font>&nbsp;Nome do Logradouro..:
 								<input class="form-control" type="text" name="nomeLogradouro" id="nomeLogradouro" maxlength="100">
 							</div>

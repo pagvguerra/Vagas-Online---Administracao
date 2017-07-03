@@ -15,7 +15,6 @@ import br.com.projeto.beans.EstacionamentoBean;
 import br.com.projeto.beans.EstacionamentoTipoPagamentoBean;
 import br.com.projeto.beans.EstadoBean;
 import br.com.projeto.beans.PaisBean;
-import br.com.projeto.beans.TipoLogradouroBean;
 import br.com.projeto.beans.TipoPagamentoBean;
 import br.com.projeto.beans.UsuarioBean;
 import br.com.projeto.daos.BairroDAO;
@@ -26,7 +25,6 @@ import br.com.projeto.daos.EstacionamentoTipoPagamentoDAO;
 import br.com.projeto.daos.EstadoDAO;
 import br.com.projeto.daos.FuncionarioDAO;
 import br.com.projeto.daos.PaisDAO;
-import br.com.projeto.daos.TipoLogradouroDAO;
 import br.com.projeto.daos.VagaDAO;
 import br.com.projeto.resources.Mensagens;
 import br.com.projeto.resources.URLs;
@@ -95,13 +93,11 @@ public class EstacionamentoBusiness {
 		List<EstadoBean> listaEstado	=	new EstadoDAO().listaTodos();
 		List<CidadeBean> listaCidade	=	new CidadeDAO().listaTodos();
 		List<BairroBean> listaBairro	=	new BairroDAO().listaTodos();
-		List<TipoLogradouroBean> listaTipoLogradouroBean = new TipoLogradouroDAO().listaTodos();
 
 		request.setAttribute("listaPais", listaPais);
 		request.setAttribute("listaEstado", listaEstado);
 		request.setAttribute("listaCidade", listaCidade);
 		request.setAttribute("listaBairro", listaBairro);
-		request.setAttribute("listaTipoLogradouro", listaTipoLogradouroBean);
 				
 		preencheRetorno(request, response, null, URLs.URL_CADASTRAR_ESTACIONAMENTO);
 	}
@@ -112,14 +108,12 @@ public class EstacionamentoBusiness {
 			List<EstadoBean> listaEstado	=	new EstadoDAO().listaTodos();
 			List<CidadeBean> listaCidade	=	new CidadeDAO().listaTodos();
 			List<BairroBean> listaBairro	=	new BairroDAO().listaTodos();
-			List<TipoLogradouroBean> listaTipoLogradouroBean = new TipoLogradouroDAO().listaTodos();
 			EstacionamentoBean estacionamentoBean = new EstacionamentoDAO().buscarPorId(Integer.parseInt(request.getParameter("idEstacionamento")));
 
 			request.setAttribute("listaPais", listaPais);
 			request.setAttribute("listaEstado", listaEstado);
 			request.setAttribute("listaCidade", listaCidade);
 			request.setAttribute("listaBairro", listaBairro);
-			request.setAttribute("listaTipoLogradouro", listaTipoLogradouroBean);
 			request.setAttribute("estacionamentoBean", estacionamentoBean);
 			
 			preencheRetorno(request, response, null, "/paginas/estacionamento/detalheEstacionamento.jsp");

@@ -9,13 +9,11 @@ import br.com.projeto.beans.CoordenadaBean;
 import br.com.projeto.beans.EnderecoBean;
 import br.com.projeto.beans.EstadoBean;
 import br.com.projeto.beans.PaisBean;
-import br.com.projeto.beans.TipoLogradouroBean;
 import br.com.projeto.daos.BairroDAO;
 import br.com.projeto.daos.CidadeDAO;
 import br.com.projeto.daos.EnderecoDAO;
 import br.com.projeto.daos.EstadoDAO;
 import br.com.projeto.daos.PaisDAO;
-import br.com.projeto.daos.TipoLogradouroDAO;
 import br.com.projeto.utils.GoogleAPI;
 import br.com.projeto.utils.Util;
 
@@ -55,13 +53,6 @@ public class EnderecoBusiness {
 		String cep = request.getParameter("cep").trim();
 		enderecoBean.setCep(cep);
 
-		int tipoLogradouro = Integer.parseInt(request.getParameter("tipoLogradouro"));
-		TipoLogradouroBean tipoLogradouroBean = new TipoLogradouroBean();
-		tipoLogradouroBean.setId(tipoLogradouro);
-		tipoLogradouroBean.setNome(new TipoLogradouroDAO().buscaNomeLogradouroPorId(tipoLogradouro));
-		
-		enderecoBean.setTipoLogradouroBean(tipoLogradouroBean);
-		
 		int numeroPorta = Integer.parseInt(request.getParameter("numero"));
 		enderecoBean.setNumero(numeroPorta);
 		
@@ -101,7 +92,6 @@ public class EnderecoBusiness {
 		
 		try {
 			StringBuilder enderecoPorExtenso = new StringBuilder("");
-			enderecoPorExtenso.append(enderecoBean.getTipoLogradouroBean().getNome()).append(" ");
 			enderecoPorExtenso.append(enderecoBean.getNomeLogradouro()).append(" ");
 			enderecoPorExtenso.append(enderecoBean.getNumero()).append(" ");
 			enderecoPorExtenso.append(enderecoBean.getCep()).append(" ");

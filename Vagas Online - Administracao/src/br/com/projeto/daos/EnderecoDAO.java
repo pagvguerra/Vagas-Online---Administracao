@@ -10,14 +10,13 @@ import br.com.projeto.beans.CoordenadaBean;
 import br.com.projeto.beans.EnderecoBean;
 import br.com.projeto.beans.EstadoBean;
 import br.com.projeto.beans.PaisBean;
-import br.com.projeto.beans.TipoLogradouroBean;
 import br.com.projeto.db.DB;
 
 import com.mysql.jdbc.Statement;
 
 public class EnderecoDAO {
 
-	private static final String BUSCA_POR_ID 				=	"SELECT E.ID AS ID_ENDERECO, E.NOME_LOGRADOURO AS NOME_LOGRADOURO, E.NUMERO AS NUMERO_LOGRADOURO, E.CEP AS CEP_LOGRADOURO, E.LONGITUDE, E.LATITUDE, T.ID AS ID_TIPOLOGRADOURO, T.NOME AS NOME_TIPOLOGRADOURO, P.ID AS ID_PAIS, P.NOME AS NOME_PAIS, EST.ID AS ID_ESTADO, EST.NOME AS NOME_ESTADO, C.ID AS ID_CIDADE, C.NOME AS NOME_CIDADE, B.ID AS ID_BAIRRO, B.NOME AS NOME_BAIRRO FROM ENDERECO E, TIPO_LOGRADOURO T, PAIS P, ESTADO EST, CIDADE C, BAIRRO B WHERE E.ID = ? AND E.ID_TIPO_LOGRADOURO = T.ID AND E.ID_PAIS = P.ID AND E.ID_ESTADO = EST.ID AND E.ID_CIDADE = C.ID AND E.ID_BAIRRO = B.ID";
+	private static final String BUSCA_POR_ID 				=	"SELECT E.ID AS ID_ENDERECO, E.NOME_LOGRADOURO AS NOME_LOGRADOURO, E.NUMERO AS NUMERO_LOGRADOURO, E.CEP AS CEP_LOGRADOURO, E.LONGITUDE, E.LATITUDE, P.ID AS ID_PAIS, P.NOME AS NOME_PAIS, EST.ID AS ID_ESTADO, EST.NOME AS NOME_ESTADO, C.ID AS ID_CIDADE, C.NOME AS NOME_CIDADE, B.ID AS ID_BAIRRO, B.NOME AS NOME_BAIRRO FROM ENDERECO E, TIPO_LOGRADOURO T, PAIS P, ESTADO EST, CIDADE C, BAIRRO B WHERE E.ID = ? AND E.ID_TIPO_LOGRADOURO = T.ID AND E.ID_PAIS = P.ID AND E.ID_ESTADO = EST.ID AND E.ID_CIDADE = C.ID AND E.ID_BAIRRO = B.ID";
 	private static final String INSERIR_ENDERECO			=	"INSERT INTO ENDERECO(NOME_LOGRADOURO, NUMERO, CEP, LONGITUDE, LATITUDE, ID_TIPO_LOGRADOURO, ID_BAIRRO, ID_CIDADE, ID_ESTADO, ID_PAIS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String ALTERAR_ENDERECO			=	"UPDATE ENDERECO SET NOME_LOGRADOURO = ?, NUMERO = ?, CEP = ?, LONGITUDE = ?, LATITUDE = ?, ID_TIPO_LOGRADOURO = ?, ID_BAIRRO = ?, ID_CIDADE = ?, ID_ESTADO = ?, ID_PAIS = ? WHERE ID = ?";
 
@@ -37,11 +36,6 @@ public class EnderecoDAO {
 			
 			if(rs.next()) {
 			
-				//TIPO LOGRADOURO
-				TipoLogradouroBean tipoLogradouroBean = new TipoLogradouroBean();
-				tipoLogradouroBean.setId(rs.getInt("ID_TIPOLOGRADOURO"));
-				tipoLogradouroBean.setNome(rs.getString("NOME_TIPOLOGRADOURO"));
-				
 				//BAIRRO
 				BairroBean bairroBean = new BairroBean();
 				bairroBean.setId(rs.getInt("ID_BAIRRO"));
@@ -74,7 +68,6 @@ public class EnderecoDAO {
 				enderecoBean.setNumero(rs.getInt("NUMERO_LOGRADOURO"));
 				enderecoBean.setCep(rs.getString("CEP_LOGRADOURO"));
 				enderecoBean.setCoordenadaBean(coordenadaBean);
-				enderecoBean.setTipoLogradouroBean(tipoLogradouroBean);
 				enderecoBean.setBairroBean(bairroBean);
 				enderecoBean.setCidadeBean(cidadeBean);
 				enderecoBean.setEstadoBean(estadoBean);
@@ -107,7 +100,7 @@ public class EnderecoDAO {
 			pstmt.setString(3, obj.getCep());
 			pstmt.setString(4, obj.getCoordenadaBean().getLongitude());
 			pstmt.setString(5, obj.getCoordenadaBean().getLatitude());
-			pstmt.setInt(6, obj.getTipoLogradouroBean().getId());
+			pstmt.setInt(6, 0);
 			pstmt.setInt(7, obj.getBairroBean().getId());
 			pstmt.setInt(8, obj.getCidadeBean().getId());
 			pstmt.setInt(9, obj.getEstadoBean().getId());
@@ -145,7 +138,7 @@ public class EnderecoDAO {
 			pstmt.setString(3, obj.getCep());
 			pstmt.setString(4, obj.getCoordenadaBean().getLongitude());
 			pstmt.setString(5, obj.getCoordenadaBean().getLatitude());
-			pstmt.setInt(6, obj.getTipoLogradouroBean().getId());
+			pstmt.setInt(6, 0);
 			pstmt.setInt(7, obj.getBairroBean().getId());
 			pstmt.setInt(8, obj.getCidadeBean().getId());
 			pstmt.setInt(9, obj.getEstadoBean().getId());

@@ -33,7 +33,7 @@
 						<b>Bairro..:</b> ${estacionamentoBean.enderecoBean.bairroBean.nome}
 					</div>
 					<div class="form-group">
-						<b>Logradouro..:</b> ${estacionamentoBean.enderecoBean.tipoLogradouroBean.nome} ${estacionamentoBean.enderecoBean.nomeLogradouro} ${estacionamentoBean.enderecoBean.numero}
+						<b>Logradouro..:</b> ${estacionamentoBean.enderecoBean.nomeLogradouro} ${estacionamentoBean.enderecoBean.numero}
 					</div>
 				</fieldset> 
 			</div>

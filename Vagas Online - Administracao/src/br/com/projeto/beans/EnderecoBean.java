@@ -7,7 +7,6 @@ public class EnderecoBean implements Serializable{
 	private static final long serialVersionUID = -7483888490913726022L;
 	
 	private int id;
-	private TipoLogradouroBean tipoLogradouroBean;
 	private String nomeLogradouro;
 	private int numero;
 	private String cep;
@@ -22,12 +21,6 @@ public class EnderecoBean implements Serializable{
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public TipoLogradouroBean getTipoLogradouroBean() {
-		return tipoLogradouroBean;
-	}
-	public void setTipoLogradouroBean(TipoLogradouroBean tipoLogradouroBean) {
-		this.tipoLogradouroBean = tipoLogradouroBean;
 	}
 	public String getNomeLogradouro() {
 		return nomeLogradouro;
@@ -98,8 +91,7 @@ public class EnderecoBean implements Serializable{
 				+ ((paisBean == null) ? 0 : paisBean.hashCode());
 		result = prime
 				* result
-				+ ((tipoLogradouroBean == null) ? 0 : tipoLogradouroBean
-						.hashCode());
+				;
 		return result;
 	}
 	@Override
@@ -149,11 +141,6 @@ public class EnderecoBean implements Serializable{
 			if (other.paisBean != null)
 				return false;
 		} else if (!paisBean.equals(other.paisBean))
-			return false;
-		if (tipoLogradouroBean == null) {
-			if (other.tipoLogradouroBean != null)
-				return false;
-		} else if (!tipoLogradouroBean.equals(other.tipoLogradouroBean))
 			return false;
 		return true;
 	}

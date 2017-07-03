@@ -1,4 +1,3 @@
-<%@page import="br.com.projeto.beans.TipoLogradouroBean"%>
 <%@page import="br.com.projeto.beans.BairroBean"%>
 <%@page import="br.com.projeto.beans.CidadeBean"%>
 <%@page import="br.com.projeto.beans.EstadoBean"%>
@@ -11,7 +10,6 @@
 	ArrayList<EstadoBean> listaEstado 					=	(ArrayList<EstadoBean>) request.getAttribute("listaEstado");
 	ArrayList<CidadeBean> listaCidade 					=	(ArrayList<CidadeBean>) request.getAttribute("listaCidade");
 	ArrayList<BairroBean> listaBairro 					=	(ArrayList<BairroBean>) request.getAttribute("listaBairro");
-	ArrayList<TipoLogradouroBean> listaTipoLogradouro 	=	(ArrayList<TipoLogradouroBean>) request.getAttribute("listaTipoLogradouro");
 
 	EstacionamentoBean estacionamentoBean				=	(EstacionamentoBean) request.getAttribute("estacionamentoBean");
 %>
@@ -116,16 +114,6 @@
 							<div class="form-group">
 								<font color="red">*</font>&nbsp;Cep..:
 								<input class="form-control" type="text" name="cep" id="cep" value="${estacionamentoBean.enderecoBean.cep}" maxlength="10">
-							</div>
-							<div class="form-group">
-								<font color="red">*</font>&nbsp;Tipo de Logradouro..: 
-								<select id="tipoLogradouro" name="tipoLogradouro" class="form-control" >
-									<option value="0">SELECIONE</option>
-									<% 	for(int i=0; i<listaTipoLogradouro.size(); i++) { 
-										TipoLogradouroBean tipoLogradouroBean = (TipoLogradouroBean) listaTipoLogradouro.get(i); %>
-											<option value="<%=tipoLogradouroBean.getId()%>" <%if(tipoLogradouroBean.getNome().equalsIgnoreCase(estacionamentoBean.getEnderecoBean().getTipoLogradouroBean().getNome())){%>selected<%}%>><%=tipoLogradouroBean.getNome()%></option>
-									<%	} %>
-								</select>
 							</div>
 							<div class="form-group">
 								<font color="red">*</font>&nbsp;Nome do Logradouro..:
