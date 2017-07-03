@@ -1,5 +1,4 @@
 $(function() {
-
 	//funções para ajax da tabela de endereços do estacionamento
 	$("select[name=pais]").on('change', function() {
 		$("#divBairros").html("<select name='bairro' id='idBairros' class='form-control'><option value='0'>SELECIONE</option></select>");
@@ -14,6 +13,27 @@ $(function() {
 	$("select[name=cidade]").on('change', function() {
 		carregaBairros();
 	});
+	
+	// Busca do logradouro atraves do CEP
+	$("#cep").on('focusout', function() {
+		carregaLogradouro();
+	});
+	
+	// Carrega os logradouros
+	function carregaLogradouro() {
+		
+		$("#divBairros").load($.post("http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/AjaxController",
+			{
+				acao 	: "CARREGA_LOGRADOURO",
+				cep 	: $("#cep").val()
+			},
+			function(retorno) {
+				
+				if (retorno.logradouro != '')
+					$("#nomeLogradouro").val(retorno.logradouro);
+			
+			}, "json"));
+	}
 
 	function carregaBairros() {
 		$("#divBairros").load($.post("http://localhost:8080/EstacionamentoOnlineEntradaAdministradorEstacionamento/servlet/AjaxController",
@@ -108,7 +128,6 @@ $(function() {
 		var	cidade				=	$("#idCidade option:selected").val();
 		var	bairro				=	$("#idBairro option:selected").val();
 		var cep					=	$("#cep").val().trim();
-		var	tipoLogradouro		=	$("#idTipoLogradouro option:selected").val();
 		var nomeLogradouro		=	$("#nomeLogradouro").val().trim();
 		var numero				=	$("#numero").val().trim();
 		var regra				=	/^[0-99]+$/;
@@ -153,11 +172,6 @@ $(function() {
 			return false;
 		}
 
-		if(tipoLogradouro == 0) {
-			alert('Escolha o Tipo de Logradouro');
-			return false;
-		}
-
 		if(nomeLogradouro === undefined || nomeLogradouro == null || nomeLogradouro == '') {
 			alert('Preencha o Nome do Logradouro');
 			return false;
@@ -188,7 +202,6 @@ $(function() {
 		var	cidade				=	$("#cidade option:selected").val();
 		var	bairro				=	$("#bairro option:selected").val();
 		var cep					=	$("#cep").val().trim();
-		var	tipoLogradouro		=	$("#tipoLogradouro option:selected").val();
 		var nomeLogradouro		=	$("#nomeLogradouro").val().trim();
 		var numero				=	$("#numero").val().trim();
 		var regra				=	/^[0-99]+$/;
@@ -230,11 +243,6 @@ $(function() {
 		
 		if(cep === undefined || cep == null || cep == '') {
 			alert('Preencha o CEP');
-			return false;
-		}
-
-		if(tipoLogradouro == 0) {
-			alert('Escolha o Tipo de Logradouro');
 			return false;
 		}
 
